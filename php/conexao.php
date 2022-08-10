@@ -14,6 +14,7 @@ if($mysqli->error) {
 // FUNÇÃO DE LOGIN
 
 function Login($email, $senha) {
+    session_start();
 	$sql = 'SELECT * FROM tb_usuario WHERE ds_email="' . $email . '"';
 	$sql .= ' AND ds_senha ="' . $senha . '"';
 	$res = $GLOBALS['mysqli']->query($sql);
