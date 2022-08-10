@@ -2,7 +2,7 @@
 
 $usuario = 'root';
 $senha = 'usbw';
-$database = 't';
+$database = 'db_msgarden';
 $host = 'localhost';
 
 $mysqli = new mysqli($host, $usuario, $senha, $database);
