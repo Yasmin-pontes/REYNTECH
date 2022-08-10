@@ -124,5 +124,5 @@ CREATE TABLE IF NOT EXISTS tb_produto_pedido (
 );
 
 
-INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `ds_email`, `ds_senha`) VALUES (null,"ray","ray@ray","123");
+INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `ds_email`, `ds_senha`) VALUES (null,"DU","dudu@ray","123");
 
