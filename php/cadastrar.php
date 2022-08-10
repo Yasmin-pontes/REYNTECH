@@ -24,12 +24,23 @@
                                 <header>
                                         <h1>Registre sua conta</h1>
                                 </header>
-                                <form action="codigo_r.php" method="POST">
+                                <form method="POST">
+                                        <?php
+                                        if ($_POST) {
+                                                Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
+                                        }
+                                        ?>
+                                        <?php
+                                                session_start();
+                                                include_once("conexao.php");
+                                                Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
+				        ?>
+
                                         <input class="form-control" type="text" name="nome" placeholder="Nome" require>
-                                        <input class="form-control" type="number" name="celular" placeholder="celular" require>
-                                        <input class="form-control" type="text" name="codigo_v" placeholder="Código de Verificação" require>  
+                                        <input class="form-control" type="email" name="email" placeholder="E-mail" require>
+                                        <input class="form-control" type="number" name="celular" placeholder="Celular" require>
+                                        <input class="form-control" type="number" name="codigo" placeholder="Código de Verificação">  
                                         <button class="btn btn-outline-primary btn-sm"> Enviar Código </button>    
-                                        <input class="form-control" type="email" name="email_r" placeholder="E-mail" require>
                                         <input class="form-control" type="password" name="senha" placeholder="Senha" require>
                                         <input class="form-control" type="password" name="c_senha" placeholder="Confirmar Senha" require>
                                         <button type="submit" class="btn btn-outline-primary btn-sm"> Confirmar </button>
