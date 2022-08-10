@@ -1,10 +1,4 @@
-<?php
-	session_start();
-	 include_once("conexao.php");
-	 if (isset($_POST['email'])) {
-		Login($_POST['email'], $_POST['senha']);
-	}
-?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -32,6 +26,15 @@
 
 			<h3>Entre</h3>
 			<form method="POST">
+
+				<?php
+					session_start();
+		 			include_once("conexao.php");
+	 				if (isset($_POST['email'])) {
+						Login($_POST['email'], $_POST['senha']);
+					}
+				?>
+				
 				<div class="row">
 					<div class="col-lg-12 no-pdd">
 						<div class="sn-field">
