@@ -1,5 +1,9 @@
+<?php
+include('protect.php');
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,17 +16,15 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     
-    <title> MS Garden </title>
+    <title>Home</title>
 </head>
 <body>
+    Bem vindo a Home, <?php echo $_SESSION['email']; ?>.
 
-<center>
-    <a href="php/login.php"> Logar </a>
-<br>
-    <a href="php/cadastrar.php"> Registrar </a>
-</center>
-
+    <p>
+        <a href="logout.php">Sair</a>
+    </p>
 </body>
 </html>
