@@ -25,11 +25,7 @@
                                         <h1>Registre sua conta</h1>
                                 </header>
                                 <form method="POST">
-                                        <?php
-                                        if ($_POST) {
-                                                Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
-                                        }
-                                        ?>
+                                        
                                         <?php
                                                 session_start();
                                                 include_once("conexao.php");

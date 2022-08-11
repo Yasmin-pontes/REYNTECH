@@ -48,7 +48,7 @@ function Cadastrar($nome, $email, $senha, $celular) {
 	$sql .= '"' . $email . '",';
 	$sql .= '"' . $r_email . '",';
     $sql .= '"' . $senha . '",';
-    $sql .= '"' . $celular . '",';
+    $sql .= '"' . $celular . '"';
 	$res = $GLOBALS['mysqli']->query($sql);
 
     if ($res) {
@@ -57,7 +57,7 @@ function Cadastrar($nome, $email, $senha, $celular) {
 		?><script>alert("Cadastrado com sucesso!\n>Login liberado.");
 		header('Location: login.php');</script> <?php
 	} else {
-		echo $sql;
+		echo "error";
 		//erro ao cadastrar
 		
 		
