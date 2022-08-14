@@ -24,7 +24,7 @@ function Login($email, $senha) {
 		//armazenando dados da sessão
 		$_SESSION['email'] = $usuario['ds_email'];
 		$_SESSION['senha'] = $usuario['ds_senha'];
-        header('Location: home.php');
+        header('Location: ../pags/home.php');
     } else {
         ?>
         <script>

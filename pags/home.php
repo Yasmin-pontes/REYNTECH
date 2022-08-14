@@ -25,7 +25,7 @@ include('protect.php');
     Bem vindo a Home, <?php echo $_SESSION['email']; ?>.
 
     <p>
-        <a href="logout.php">Sair</a>
+        <a href="../php/logout.php">Sair</a>
     </p>
 </body>
 </html>
