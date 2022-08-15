@@ -29,8 +29,10 @@
                                         <?php
                                                 session_start();
                                                 include_once("conexao.php");
-                                                Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
-				        ?>
+                                                if (isset($_POST['nome'], $_POST['email'], $_POST['celular'], $_POST['codigo'], $_POST['senha'], $_POST['c_senha'])) {
+                                                        Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
+                                                }
+                                        ?>
 
                                         <input class="form-control" type="text" name="nome" placeholder="Nome" require>
                                         <input class="form-control" type="email" name="email" placeholder="E-mail" require>

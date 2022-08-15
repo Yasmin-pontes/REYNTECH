@@ -42,25 +42,15 @@ function Cadastrar($nome, $email, $senha, $celular) {
     $r_email = "bn@bn";
 	$ingresso = "2000-12-12";
 
-	$sql = 'INSERT INTO tb_usuario (cd_usuario, nm_usuario, dt_ingresso, ds_email, ds_email_recuperacao, ds_senha, nr_celular) VALUES (null, ';
-	$sql .= '"' . $nome . '",';
-	$sql .= '"' . $ingresso . '",';
-	$sql .= '"' . $email . '",';
-	$sql .= '"' . $r_email . '",';
-    $sql .= '"' . $senha . '",';
-    $sql .= '"' . $celular . '"';
+	$sql = 'INSERT INTO tb_usuario (cd_usuario, nm_usuario, dt_ingresso, ds_email, ds_email_recuperacao, ds_senha, nr_celular) 
+	VALUES (null, "'. $nome .'", "' . $ingresso . '", "' . $email . '", "' . $r_email . '", "' . $senha . '", "' . $celular . '");';
 	$res = $GLOBALS['mysqli']->query($sql);
 
     if ($res) {
 		//Cadastrado
-
-		?><script>alert("Cadastrado com sucesso!\n>Login liberado.");
-		header('Location: login.php');</script> <?php
+		header('Location: login.php');
 	} else {
 		echo "error";
 		//erro ao cadastrar
-		
-		
-		//volta();
 	}
 }
