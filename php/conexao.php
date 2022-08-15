@@ -1,5 +1,4 @@
 <?php
-session_start();
 $usuario = 'root';
 $senha = 'usbw';
 $database = 'db_msgarden';
@@ -54,3 +53,5 @@ function Cadastrar($nome, $email, $senha, $celular) {
 		//erro ao cadastrar
 	}
 }
+
+// FIM FUNÇÃO DE CADASTRAR

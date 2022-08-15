@@ -123,10 +123,11 @@ CREATE TABLE IF NOT EXISTS tb_produto_pedido (
     
 );
 
+INSERT INTO `tb_imagem`(`cd_imagem`, `ft_produto_principal`) 
+VALUES (null,"edu.jpg");
 
-INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`) 
-VALUES (null,"ray","2000-12-12","ray@ray","ray@ray",123,12345);
+INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`, `id_imagem_usuario`) 
+VALUES (null,"ray","2000-12-12","ray@ray","ray@ray",123, 12345, 1);
 
-INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`) 
-VALUES (null,"edu","2000-12-12","edu@edu","edu@edu",123,12345);
-
+INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`, `id_imagem_usuario`) 
+VALUES (null,"edu","2000-12-12","edu@edu","edu@edu",123,12345, 2);
