@@ -29,7 +29,7 @@
 
 				<?php
 					session_start();
-		 			include_once("conexao.php");
+		 			include_once("../php/conexao.php");
 	 				if (isset($_POST['email'])) {
 						Login($_POST['email'], $_POST['senha']);
 					}

@@ -28,7 +28,7 @@
                                         
                                         <?php
                                                 session_start();
-                                                include_once("conexao.php");
+                                                include_once("../php/conexao.php");
                                                 if (isset($_POST['nome'], $_POST['email'], $_POST['celular'], $_POST['codigo'], $_POST['senha'], $_POST['c_senha'])) {
                                                         Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
                                                 }

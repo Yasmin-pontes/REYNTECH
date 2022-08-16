@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('conexao.php');
+include_once('../php/conexao.php');
 
 if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
 	unset($_SESSION['email']);
