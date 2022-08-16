@@ -39,7 +39,7 @@ function Login($email, $senha) {
 
 function Cadastrar($nome, $email, $senha, $celular) {
     $r_email = "bn@bn";
-	$ingresso = date('d/m/Y');
+	$ingresso = date('d-m-Y');
 	$img = 1;
 
 	$sql = 'INSERT INTO tb_usuario (cd_usuario, nm_usuario, dt_ingresso, ds_email, ds_email_recuperacao, ds_senha, nr_celular, id_imagem_usuario) 
