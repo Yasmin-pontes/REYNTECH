@@ -39,16 +39,16 @@ function Login($email, $senha) {
 
 function Cadastrar($nome, $email, $senha, $celular) {
     $r_email = "bn@bn";
-	$ingresso = "2000-12-12";
+	$ingresso = date('d/m/Y');
+	$img = 1;
 
-	$sql = 'INSERT INTO tb_usuario (cd_usuario, nm_usuario, dt_ingresso, ds_email, ds_email_recuperacao, ds_senha, nr_celular) 
-	VALUES (null, "'. $nome .'", "' . $ingresso . '", "' . $email . '", "' . $r_email . '", "' . $senha . '", "' . $celular . '");';
+	$sql = 'INSERT INTO tb_usuario (cd_usuario, nm_usuario, dt_ingresso, ds_email, ds_email_recuperacao, ds_senha, nr_celular, id_imagem_usuario) 
+	VALUES (null, "'. $nome .'", "' . $ingresso . '", "' . $email . '", "' . $r_email . '", "' . $senha . '", "' . $celular . '", "' . $img . '");';
 	$res = $GLOBALS['mysqli']->query($sql);
 
     if ($res) {
 		//Cadastrado
-		echo "ok";
-		// header('Location: ../pags/login.php');
+		header('Location: ../pags/login.php');
 	} else {
 		echo "error";
 		//erro ao cadastrar

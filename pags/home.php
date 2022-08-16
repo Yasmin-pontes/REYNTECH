@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('protect.php');
+include('../php/protect.php');
 ?>
 
 <!DOCTYPE html>
