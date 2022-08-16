@@ -39,11 +39,10 @@ function Login($email, $senha) {
 
 function Cadastrar($nome, $email, $senha, $celular) {
     $r_email = "bn@bn";
-	$ingresso = date('d-m-Y');
 	$img = 1;
 
 	$sql = 'INSERT INTO tb_usuario (cd_usuario, nm_usuario, dt_ingresso, ds_email, ds_email_recuperacao, ds_senha, nr_celular, id_imagem_usuario) 
-	VALUES (null, "'. $nome .'", "' . $ingresso . '", "' . $email . '", "' . $r_email . '", "' . $senha . '", "' . $celular . '", "' . $img . '");';
+	VALUES (null, "'. $nome .'", NOW(), "' . $email . '", "' . $r_email . '", "' . $senha . '", "' . $celular . '", "' . $img . '");';
 	$res = $GLOBALS['mysqli']->query($sql);
 
     if ($res) {
