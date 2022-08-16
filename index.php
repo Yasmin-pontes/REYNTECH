@@ -19,9 +19,9 @@
 <body>
 
 <center>
-    <a href="php/login.php"> Logar </a>
+    <a href="pags/login.php"> Logar </a>
 <br>
-    <a href="php/cadastrar.php"> Registrar </a>
+    <a href="pags/cadastrar.php"> Registrar </a>
 </center>
 
 </body>
