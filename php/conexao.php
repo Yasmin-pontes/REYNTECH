@@ -1,5 +1,5 @@
 <?php
-$usuario = 'root';
+$usuio = 'root';
 $senha = 'usbw';
 $database = 'db_msgarden';
 $host = 'localhost';
