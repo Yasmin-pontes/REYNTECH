@@ -39,14 +39,34 @@
                                         <input class="form-control" type="number" name="celular" placeholder="Celular" require>
                                         <input class="form-control" type="number" name="codigo" placeholder="Código de Verificação">  
                                         <button class="btn btn-outline-primary btn-sm"> Enviar Código </button>    
-                                        <input class="form-control" type="password" name="senha" placeholder="Senha" require>
-                                        <input class="form-control" type="password" name="c_senha" placeholder="Confirmar Senha" require>
+                                        <input class="form-control" type="password" id="senha1" name="senha" placeholder="Senha" require>
+                                        <input class="form-control" type="password" id="senha2" name="c_senha" placeholder="Confirmar Senha" require>
+                                        <span class="erro-pass" style="color:red;"></span>
                                         <button type="submit" class="btn btn-outline-primary btn-sm"> Confirmar </button>
                                         <a href="../index.php"> Voltar </a>
+
                                 </form>
                         </div>
                 </div>
         </div>
 
+        <script>
+                const s1 = document.querySelector('#senha1');
+                const s2 = document.querySelector('#senha2');
+                const erro = document.querySelector('.erro-pass');
+                function Travar() {
+                        event.preventDefault();
+                }
+                function Submit(event) {
+                        if (s1.value != s2.value) {
+                                s2.style.color = 'red';
+                                erro.innerHTML = 'Senhas diferentes';
+                                //alert ou não
+                                Travar();
+                        }
+                }
+                const form = document.getElementById('cadUsuario');
+                form.addEventListener('submit', Submit);
+        </script>
 </body>
 </html>

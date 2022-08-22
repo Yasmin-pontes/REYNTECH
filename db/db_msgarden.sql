@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS tb_usuario (
   ds_email VARCHAR(60) NOT NULL,
   ds_email_recuperacao VARCHAR(60) NULL,
   ds_senha VARCHAR(20) NOT NULL,
-  nr_celular INT NOT NULL,
+  nr_celular VARCHAR(11) NOT NULL,
   id_imagem_usuario INT NOT NULL,
   PRIMARY KEY (cd_usuario),
   
@@ -125,6 +125,9 @@ CREATE TABLE IF NOT EXISTS tb_produto_pedido (
 
 INSERT INTO `tb_imagem`(`cd_imagem`, `ft_produto_principal`) 
 VALUES (null,"edu.jpg");
+
+INSERT INTO `tb_imagem`(`cd_imagem`, `ft_produto_principal`) 
+VALUES (null,"ray.jpg");
 
 INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`, `id_imagem_usuario`) 
 VALUES (null,"ray","2000-12-12","ray@ray","ray@ray",123, 12345, 1);
