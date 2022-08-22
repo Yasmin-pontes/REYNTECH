@@ -42,7 +42,10 @@
                                         <input class="form-control" type="password" id="senha1" name="senha" placeholder="Senha" require>
                                         <input class="form-control" type="password" id="senha2" name="c_senha" placeholder="Confirmar Senha" require>
                                         <span class="erro-pass" style="color:red;"></span>
+
                                         <button type="submit" class="btn btn-outline-primary btn-sm"> Confirmar </button>
+
+                                        
                                         <a href="../index.php"> Voltar </a>
 
                                 </form>
