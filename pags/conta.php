@@ -13,21 +13,29 @@
     <h3>Segurança</h3>
 	    <form method="POST">
 
-    <?php
-        session_start();
-        include_once("../php/conexao.php");
-        if (isset($_POST['email_a'])) {
-            Alterar_email($email, $email_a); 
-        }
-    ?>
-
-
             <label>Alterar e-mail</label>
             <input type="text" name="email_a" placeholder="Alterar e-mail">
 <br>
-            <button type="submit" value="submit"> Alterar </button>
+            <button name="c_gmail" onclick="Alterar_email($email, $email_a)"> Alterar </button>
+<br>
+<br>    
+            <label>Alterar senha</label>
+            <input type="text" name="a_senha" placeholder="Alterar senha">
+<br>
+            <button name="c_pass" onclick="Alterar_senha($email, $a_senha)"> Alterar </button>
+
 <br>
 <a href="home.php"> Voltar </a>
-
 </body>
+<?php
+    session_start();
+    include_once("../php/conexao.php");
+
+        if(isset($_POST["c_gmail"])){
+            Alterar_email($email, $email_a);
+        }
+        if (isset($_POST["c_pass"])) {
+            Alterar_senha($email, $a_senha); 
+        }
+    ?>
 </html>

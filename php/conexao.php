@@ -77,3 +77,21 @@ function Alterar_email($email, $email_a){
 // FIM DA FUNÇÃO DE ALTERAR EMAIL
 
 
+// FUNÇÃO DE ALTERAR SENHA
+function Alterar_senha($email, $a_senha){
+
+	$a_senha = $_POST['a_senha'];
+	$email = $_SESSION['email'];
+
+	$sql = 'UPDATE tb_usuario SET ds_senha ="'. $a_senha .'" WHERE ds_email = "'. $email .'";';
+	$res = $GLOBALS['mysqli']->query($sql);
+	
+	if ($res) {
+		//Alterado
+		?> <script> alert("Senha Alterada") </script> <?php
+	} else {
+		//Erro
+		?> <script> alert("ERRO") </script> <?php
+	}
+}    
+// FIM DA FUNÇÃO DE ALTERAR SENHA
