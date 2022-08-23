@@ -1,5 +1,5 @@
 <?php
-$usuio = 'root';
+$usuario = 'root';
 $senha = 'usbw';
 $database = 'db_msgarden';
 $host = 'localhost';
@@ -47,7 +47,7 @@ function Cadastrar($nome, $email, $senha, $celular) {
 
     if ($res) {
 		//Cadastrado
-		// header('Location: ../pags/login.php');
+		header('Location: ../pags/login.php');
 	} else {
 		echo "error";
 		//erro ao cadastrar
@@ -55,3 +55,25 @@ function Cadastrar($nome, $email, $senha, $celular) {
 }
 
 // FIM FUNÇÃO DE CADASTRAR
+
+
+// FUNÇÃO DE ALTERAR EMAIL
+function Alterar_email($email, $email_a){
+
+	$email_a = $_POST['email_a'];
+	$email = $_SESSION['email'];
+
+	$sql = 'UPDATE tb_usuario SET ds_email ="'. $email_a .'" WHERE ds_email = "'. $email .'";';
+	$res = $GLOBALS['mysqli']->query($sql);
+	
+	if ($res) {
+		//Alterado
+		?> <script> alert("E-mail Alterado") </script> <?php
+	} else {
+		//Erro
+		?> <script> alert("ERRO") </script> <?php
+	}
+}    
+// FIM DA FUNÇÃO DE ALTERAR EMAIL
+
+
