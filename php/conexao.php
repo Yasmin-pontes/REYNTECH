@@ -96,20 +96,38 @@ function Add_email($email, $email_add){
 
 
 // FUNÇÃO DE ALTERAR SENHA
-function Alterar_senha($email, $a_senha){
+function Alterar_senha($email, $a_senha, $senha){
 
 	$a_senha = $_POST['a_senha'];
 	$email = $_SESSION['email'];
+	$senha = $_POST['senha'];
+	$con_senha = $_POST['con_senha'];
 
-	$sql = 'UPDATE tb_usuario SET ds_senha ="'. $a_senha .'" WHERE ds_email = "'. $email .'";';
+	$sql = 'SELECT * FROM tb_usuario WHERE ds_email="' . $email . '"';
+	$sql .= ' AND ds_senha ="' . $senha . '"';
 	$res = $GLOBALS['mysqli']->query($sql);
-	
-	if ($res) {
-		//Alterado
-		?> <script> alert("Senha Alterada") </script> <?php
-	} else {
-		//Erro
-		?> <script> alert("ERRO") </script> <?php
-	}
-}    
+
+	if ($res->num_rows > 0) {
+
+
+		if ($con_senha == $a_senha){
+			$sql = 'UPDATE tb_usuario SET ds_senha ="'. $a_senha .'" WHERE ds_email = "'. $email .'";';
+			$res = $GLOBALS['mysqli']->query($sql);
+
+			if ($res) {
+				//Alterado
+				?> <script> alert("Senha Alterada") </script> <?php
+			}else{
+				//Erro
+				?> <script> alert("ERRO") </script> <?php
+			}
+		}else{
+			//Senhas Diferentes
+			?> <script> alert("Senhas Diferentes") </script> <?php
+		}
+	}else{
+		//Senha Incorreta
+		?> <script> alert("Senha Incorreta") </script> <?php
+	} 
+}
 // FIM DA FUNÇÃO DE ALTERAR SENHA

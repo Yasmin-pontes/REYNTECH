@@ -24,11 +24,11 @@
             <button name="add_email" onclick="Add_email($email, $email_add)"> Adicionar </button>
 <br><br>
             <label>Alterar senha</label> <br>
-            <input type="text" name="a_senha" placeholder="Senha atual"> <br>
+            <input type="text" name="senha" placeholder="Senha atual"> <br>
             <input type="text" name="a_senha" placeholder="Nova senha"> <br>
-            <input type="text" name="a_senha" placeholder="Confirmar senha">
+            <input type="text" name="con_senha" placeholder="Confirmar senha">
 <br>
-            <button name="c_pass" onclick="Alterar_senha($email, $a_senha)"> Alterar </button>
+            <button name="c_pass" onclick="Alterar_senha($email, $a_senha, $senha, $con_senha)"> Alterar </button>
 <br><br>
 
 <a href="home.php"> Voltar </a>
@@ -49,7 +49,7 @@
     
     //ALTERAR SENHA
         if (isset($_POST["c_pass"])) {
-            Alterar_senha($email, $a_senha); 
+            Alterar_senha($email, $a_senha, $senha, $con_senha); 
         }
     ?>
 </html>
