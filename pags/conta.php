@@ -13,27 +13,41 @@
     <h3>Segurança</h3>
 	    <form method="POST">
 
-            <label>Alterar e-mail</label>
+            <label>Alterar e-mail</label> <br>
             <input type="text" name="email_a" placeholder="Alterar e-mail">
 <br>
             <button name="c_gmail" onclick="Alterar_email($email, $email_a)"> Alterar </button>
+<br><br>
+            <label>Adicionar e-mail</label> <br>
+            <input type="text" name="email_add" placeholder="Adicionar e-mail">
 <br>
-<br>    
-            <label>Alterar senha</label>
-            <input type="text" name="a_senha" placeholder="Alterar senha">
+            <button name="add_email" onclick="Add_email($email, $email_add)"> Adicionar </button>
+<br><br>
+            <label>Alterar senha</label> <br>
+            <input type="text" name="a_senha" placeholder="Senha atual"> <br>
+            <input type="text" name="a_senha" placeholder="Nova senha"> <br>
+            <input type="text" name="a_senha" placeholder="Confirmar senha">
 <br>
             <button name="c_pass" onclick="Alterar_senha($email, $a_senha)"> Alterar </button>
+<br><br>
 
-<br>
 <a href="home.php"> Voltar </a>
 </body>
 <?php
     session_start();
     include_once("../php/conexao.php");
 
+    //ALTERAR E-MAIL
         if(isset($_POST["c_gmail"])){
             Alterar_email($email, $email_a);
         }
+    
+    //ADD E-MAIL
+        if (isset($_POST["add_email"])) {
+            Add_email($email, $email_add); 
+        }
+    
+    //ALTERAR SENHA
         if (isset($_POST["c_pass"])) {
             Alterar_senha($email, $a_senha); 
         }

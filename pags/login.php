@@ -64,12 +64,14 @@
 					</div>
 					<div class="col-lg-12 no-pdd">
 						<button type="submit" value="submit">Entrar</button>
+						<br>
+						<a href="../index.php"> Voltar </a>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
-    
+	
 
 </body>
 </html>

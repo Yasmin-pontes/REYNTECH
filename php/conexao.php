@@ -38,11 +38,10 @@ function Login($email, $senha) {
 // FUNÇÃO DE CADASTRAR
 
 function Cadastrar($nome, $email, $senha, $celular) {
-    $r_email = "bn@bn";
 	$img = 1;
 
 	$sql = 'INSERT INTO tb_usuario (cd_usuario, nm_usuario, dt_ingresso, ds_email, ds_email_recuperacao, ds_senha, nr_celular, id_imagem_usuario) 
-	VALUES (null, "'. $nome .'", NOW(), "' . $email . '", "' . $r_email . '", "' . $senha . '", "' . $celular . '", "' . $img . '");';
+	VALUES (null, "'. $nome .'", NOW(), "' . $email . '", null , "' . $senha . '", "' . $celular . '", "' . $img . '");';
 	$res = $GLOBALS['mysqli']->query($sql);
 
     if ($res) {
@@ -75,6 +74,25 @@ function Alterar_email($email, $email_a){
 	}
 }    
 // FIM DA FUNÇÃO DE ALTERAR EMAIL
+
+// FUNÇÃO DE FUNÇÃO DE ADD EMAIl
+function Add_email($email, $email_add){
+
+	$email_add = $_POST['email_add'];
+	$email = $_SESSION['email'];
+
+	$sql = 'UPDATE tb_usuario SET ds_email_recuperacao ="'. $email_add .'" WHERE ds_email = "'. $email .'";';
+	$res = $GLOBALS['mysqli']->query($sql);
+	
+	if ($res) {
+		//Alterado
+		?> <script> alert("E-mail Adicionado") </script> <?php
+	} else {
+		//Erro
+		?> <script> alert("ERRO") </script> <?php
+	}
+}    
+// FIM DA FUNÇÃO DE ADD EMAIl
 
 
 // FUNÇÃO DE ALTERAR SENHA
