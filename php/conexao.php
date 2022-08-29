@@ -67,7 +67,8 @@ function Alterar_email($email, $email_a){
 	
 	if ($res) {
 		//Alterado
-		?> <script> alert("E-mail Alterado") </script> <?php
+		?> <script> alert("E-mail Alterado -- Reinicie a sessão ") </script> <?php
+		echo "<script>window.location = '../index.php'</script>";
 	} else {
 		//Erro
 		?> <script> alert("ERRO") </script> <?php
@@ -123,7 +124,12 @@ function Alterar_senha($email, $a_senha, $senha){
 			}
 		}else{
 			//Senhas Diferentes
-			?> <script> alert("Senhas Diferentes") </script> <?php
+			?> 
+			<style>
+				#senha2 {
+					border-color: red;
+				}
+			</style> <?php
 		}
 	}else{
 		//Senha Incorreta

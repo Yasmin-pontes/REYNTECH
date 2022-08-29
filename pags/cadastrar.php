@@ -26,7 +26,7 @@
                                 </header>
                                 <form method="POST">
                                         
-                                        <?php
+                                        <?php 
                                                 session_start();
                                                 include_once("../php/conexao.php");
                                                 if (isset($_POST['nome'], $_POST['email'], $_POST['celular'], $_POST['codigo'], $_POST['senha'], $_POST['c_senha'])) {
@@ -53,23 +53,6 @@
                 </div>
         </div>
 
-        <script>
-                const s1 = document.querySelector('#senha1');
-                const s2 = document.querySelector('#senha2');
-                const erro = document.querySelector('.erro-pass');
-                function Travar() {
-                        event.preventDefault();
-                }
-                function Submit(event) {
-                        if (s1.value != s2.value) {
-                                s2.style.color = 'red';
-                                erro.innerHTML = 'Senhas diferentes';
-                                //alert ou não
-                                Travar();
-                        }
-                }
-                const form = document.getElementById('cadUsuario');
-                form.addEventListener('submit', Submit);
-        </script>
+
 </body>
 </html>
