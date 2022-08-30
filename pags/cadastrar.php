@@ -34,13 +34,13 @@
                                                 }
                                         ?>
 
-                                        <input class="form-control" type="text" name="nome" placeholder="Nome" require>
-                                        <input class="form-control" type="email" name="email" placeholder="E-mail" require>
-                                        <input class="form-control" type="number" name="celular" placeholder="Celular" require>
+                                        <input class="form-control" type="text" name="nome" placeholder="Nome" required>
+                                        <input class="form-control" type="email" name="email" placeholder="E-mail" required>
+                                        <input class="form-control" type="number" name="celular" placeholder="Celular" required>
                                         <input class="form-control" type="number" name="codigo" placeholder="Código de Verificação">  
                                         <button class="btn btn-outline-primary btn-sm"> Enviar Código </button>    
-                                        <input class="form-control" type="password" id="senha1" name="senha" placeholder="Senha" require>
-                                        <input class="form-control" type="password" id="senha2" name="c_senha" placeholder="Confirmar Senha" require>
+                                        <input class="form-control" type="password" id="senha1" name="senha" placeholder="Senha" required>
+                                        <input class="form-control" type="password" id="senha2" name="c_senha" placeholder="Confirmar Senha" required>
                                         <span class="erro-pass" style="color:red;"></span>
 
                                         <button type="submit" class="btn btn-outline-primary btn-sm"> Confirmar </button>
