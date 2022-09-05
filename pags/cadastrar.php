@@ -13,7 +13,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/estilo.css">
-    
+
     <title>Registro</title>
 </head>
 <body>

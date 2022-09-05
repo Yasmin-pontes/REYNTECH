@@ -46,7 +46,8 @@ function Cadastrar($nome, $email, $senha, $celular) {
 
     if ($res) {
 		//Cadastrado
-		header('Location: ../pags/login.php');
+		$email = $_SESSION['email'];
+		header('Location: ../php/sendEmail.php');
 	} else {
 		echo "error";
 		//erro ao cadastrar
