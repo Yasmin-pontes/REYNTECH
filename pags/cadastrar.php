@@ -14,6 +14,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/estilo.css">
 
+    <!-- ENVIAR EMAIL -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
     <title>Registro</title>
 </head>
 <body>
@@ -25,7 +28,6 @@
                                         <h1>Registre sua conta</h1>
                                 </header>
                                 <form method="POST">
-                                        
                                         <?php 
                                                 session_start();
                                                 include_once("../php/conexao.php");
@@ -33,9 +35,8 @@
                                                         Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
                                                 }
                                         ?>
-
                                         <input class="form-control" type="text" name="nome" placeholder="Nome" required>
-                                        <input class="form-control" type="email" name="email" placeholder="E-mail" required>
+                                        <input class="form-control" id="email" type="email" name="email" placeholder="E-mail" required>
                                         <input class="form-control" type="number" name="celular" placeholder="Celular" required>
                                         <input class="form-control" type="number" name="codigo" placeholder="Código de Verificação">  
                                         <button class="btn btn-outline-primary btn-sm"> Enviar Código </button>    
@@ -52,7 +53,5 @@
                         </div>
                 </div>
         </div>
-
-
 </body>
 </html>

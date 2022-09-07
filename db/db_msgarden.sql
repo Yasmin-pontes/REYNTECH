@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS tb_usuario (
   ds_senha VARCHAR(20) NOT NULL,
   nr_celular VARCHAR(11) NOT NULL,
   id_imagem_usuario INT NOT NULL,
+  status tinyint,
   PRIMARY KEY (cd_usuario),
   
   FOREIGN KEY (id_imagem_usuario)

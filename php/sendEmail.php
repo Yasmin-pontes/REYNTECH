@@ -8,38 +8,32 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
-<?php
-session_start();
-include_once('conexao.php');
 
-$_SESSION['email'] = $email;
-
-echo $_SESSION['email'];
-
-?>
-
+<center>
+<form method="post">
+    <h2> Confirme seu email</h2>
+    <input type="email" name="email" id="email" required>
+    <br>👇<br>👉<input type="button" value="Enviar Email" onclick="sendEmail()" />👈<br>👆
+</form>
+</center> 
 <script>
   function sendEmail() {
-	Email.send({
-	Host : "smtp.elasticemail.com",
-	Username : "raylla.l.silva@gmail.com",
-	Password : "B1EA8D7A4303C4BE5D0D454BB6955285CE15",
-	To : $email,
-	From : "raylla.l.silva@gmail.com",
-	Subject : "REYNTECH",
-	Body : "Você ganhou R$100 <br> clique aqui para pegar: clonacartão.com"
-	}).then(
-	  message => alert("Email enviado com sucesso 👁👄👁")
-	);
+  var email = document.getElementById("email"). value;
+  var mensagem = "http://localhost:81/REYNTECH/php/confirmar.php?h=";
+  var cod = email;
+
+	  Email.send({
+	  Host : "smtp.elasticemail.com",
+	  Username : "raylla.l.silva@gmail.com",
+	  Password : "B1EA8D7A4303C4BE5D0D454BB6955285CE15",
+	  To : email,
+	  From : "raylla.l.silva@gmail.com",
+	  Subject : "REYNTECH",
+	  Body :"Clique aqui para confirmar seu email " + mensagem + cod
+	  }).then(
+	    message => alert("Verifique seu email --- Pode cair na caixa de spam")
+	  );
   }
 </script>    
-<center>
-    👁👄👁<br>👇<br>
-<form method="post">
-    👉<input type="button" value="Enviar Email" 
-        onclick="sendEmail()" />👈
-        <br>👆
-</form>
-</center>
 </body>
 </html>
