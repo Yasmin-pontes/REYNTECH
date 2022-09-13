@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,13 +14,13 @@
 	<!-- CSS -->
     <link rel="stylesheet" href="../css/estilo.css">
 
-	<title>Login</title>
+	<title>ADM</title>
 </head>
 <body>
 
 	<div class="container">
 		<div class="row">
-			<h1>Acesse sua conta</h1>
+			<h1>Acesse sua conta de ADM</h1>
 
 			<h3>Entre</h3>
 			<form method="POST">
@@ -30,38 +28,26 @@
 				<?php
 					session_start();
 		 			include_once("../php/conexao.php");
-	 				if (isset($_POST['email'])) {
-						Login($_POST['email'], $_POST['senha']);
+	 				if (isset($_POST['user_adm'])) {
+						LoginAdmin($_POST['user_adm'], $_POST['senha_adm']);
 					}
 				?>
 				
 				<div class="row">
 					<div class="col-lg-12 no-pdd">
 						<div class="sn-field">
-							<input type="text" name="email" placeholder="Email">
+							<input type="text" name="user_adm" placeholder="User">
 							<i class="la la-user"></i>
 						</div>
 						<!--sn-field end-->
 					</div>
 					<div class="col-lg-12 no-pdd">
 						<div class="sn-field">
-							<input type="password" name="senha" placeholder="Senha">
+							<input type="password" name="senha_adm" placeholder="Senha">
 							<i class="la la-lock"></i>
 						</div>
 					</div>
-					<div class="col-lg-12 no-pdd">
-						<div class="checky-sec">
-							<div class="fgt-sec">
-								<input type="checkbox" name="cc" id="c1">
-								<label for="c1">
-									<span></span>
-								</label>
-								<small> Lembrar</small>
-							</div>
-							<!--fgt-sec end-->
-							<a href="esqueceu_senha.php">Esqueceu a senha?</a>
-						</div>
-					</div>
+<br><br>
 					<div class="col-lg-12 no-pdd">
 						<button type="submit" value="submit">Entrar</button>
 						<br>

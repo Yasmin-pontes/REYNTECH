@@ -8,5 +8,9 @@ if(!empty($h)){
 
     echo "<h1>CADASTRO CONFIRMADO</h1>";
 };
-
 ?>
+
+<html>
+    <title> Confirmar E-mail </title>
+    <a href="../pags/login.php"> Clique aqui para logar </a>
+</html>

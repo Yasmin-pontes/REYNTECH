@@ -10,6 +10,32 @@ if($mysqli->error) {
     die("Falha ao conectar ao banco de dados: " . $mysqli->error);
 }
 
+//FUNÇÃO DE ADM
+
+function LoginAdmin($user_adm, $senha_adm){
+	$sql = 'SELECT * FROM tb_admin WHERE nm_admin ="' . $user_adm . '"';
+	$sql .= ' AND ds_senha ="' . $senha_adm . '"';
+	$res = $GLOBALS['mysqli']->query($sql);
+
+    if ($res->num_rows > 0) { //ENCONTROU O USUÁRIO
+		$usuario = $res->fetch_array(); //array com os dados
+		//armazenando dados da sessão
+		$_SESSION['admin'] = $usuario['nm_admin'];
+		$_SESSION['senha'] = $usuario['ds_senha'];
+        header('Location: ../admin/admin.php');
+    } else {
+        ?>
+        <script>
+            alert("Usuário invalido.");
+        </script>
+        <?php
+    }
+}
+
+
+
+//FIM DA FUNÇÃO DE ADM
+
 // FUNÇÃO DE LOGIN
 
 function Login($email, $senha) {
