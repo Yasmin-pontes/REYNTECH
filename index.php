@@ -22,6 +22,8 @@
     <a href="pags/login.php"> Logar </a>
 <br>
     <a href="pags/cadastrar.php"> Registrar </a>
+<br>
+    <a href="admin/login_admin.php"> ADM </a>
 </center>
 
 </body>
