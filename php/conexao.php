@@ -32,9 +32,15 @@ function LoginAdmin($user_adm, $senha_adm){
     }
 }
 
-
-
 //FIM DA FUNÇÃO DE ADM
+
+// FUNÇÃO DE ADD PRODUTOS
+
+function Produtos($nome_p, $preco, $categorias, $descricao, $img) {
+    echo $nome_p.'<br>'. $preco.'<br>'.  $categorias.'<br>'.  $descricao.'<br>'.  $img;
+}
+
+// FIM DA FUNÇÃO DE ADD PRODUTOS
 
 // FUNÇÃO DE LOGIN
 
