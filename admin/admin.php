@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <title>ADM</title>
   <meta charset="utf-8">
@@ -16,7 +16,7 @@
   <br><br>
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#curiosidades">Curiosidades</button>
   <br><br>
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Usuários</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#usuario">Usuários</button>
 
   <!-- Modal Primeira Página -->
     <!-- Parte Produtos -->
@@ -32,6 +32,24 @@
           <a data-toggle="modal" data-target="#modal_produto">ADICIONAR</a><br>
           <a data-toggle="modal" data-target="#">EXCLUIR</a><br>
           <a data-toggle="modal" data-target="#">FILTRO</a>
+          <?php
+          include_once("../php/conexao.php");
+          echo '<br>';
+          $sql = 'SELECT * FROM `tb_produto` WHERE 1';
+	        $res = $GLOBALS['mysqli']->query($sql);
+
+          while ($row = $res -> fetch_object()) {
+            echo "<br>";
+            echo "
+              <span id='id'>Nome</span>: $row->nm_produto <br>
+              <span id='id'>Preço</span>: $row->vl_preco <br>
+              <span id='id'>Descrição</span>: $row->ds_produto <br>
+              <span id='id'>Quantidade</span>: $row->qtd_produto <br>
+              <span id='id'>Categoria</span>: $row->id_categoria";
+              ?>
+              <?php
+            echo "<hr>";
+          }?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -53,6 +71,22 @@
           <a data-toggle="modal" data-target="#modal_curiosidade">ADICIONAR</a><br>
           <a data-toggle="modal" data-target="#">EXCLUIR</a><br>
           <a data-toggle="modal" data-target="#">FILTRO</a>
+          <?php
+          include_once("../php/conexao.php");
+          echo '<br>';
+          $sql = 'SELECT * FROM `tb_curiosidade` WHERE 1';
+	        $res = $GLOBALS['mysqli']->query($sql);
+
+          while ($row = $res -> fetch_object()) {
+            echo "<br>";
+            echo "
+              <span id='id'>Nome</span>: $row->nm_curiosidade <br>
+              <span id='id'>Descrição</span>: $row->ds_descricao <br>
+              <span id='id'>Categoria</span>: $row->id_categoria <br> ";
+              ?>
+              <?php
+            echo "<hr>";
+          }?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -61,6 +95,44 @@
     </div>
   </div>
    <!--Fim da Parte Curiosidades -->
+   <!-- Parte Usuarios -->
+  <div class="modal fade" id="usuario" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Usuarios</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" name="pesquisar" placeholder="PESQUISAR"><br>
+          <a data-toggle="modal" data-target="#">EXCLUIR</a><br>
+          <a data-toggle="modal" data-target="#">FILTRO</a>
+          <?php
+          include_once("../php/conexao.php");
+          echo '<br>';
+          $sql = 'SELECT * FROM `tb_usuario` WHERE 1';
+	        $res = $GLOBALS['mysqli']->query($sql);
+
+          while ($row = $res -> fetch_object()) {
+            echo "<br>";
+            echo "
+              <span id='id'>Nome</span>: $row->nm_usuario <br>
+              <span id='id'>Data de Ingresso</span>: $row->dt_ingresso <br>
+              <span id='id'>Email</span>: $row->ds_email <br>
+              <span id='id'>Email de Recupeção</span>: $row->ds_email_recuperacao <br>
+              <span id='id'>Celular</span>: $row->nr_celular";
+              ?>
+              <?php
+            echo "<hr>";
+          }?>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- Fim da Parte Usuarios -->
  <!-- Modal Fim da Primeira Página -->
 
  <!-- Modal Página de ADD Produto -->
@@ -75,7 +147,9 @@
         <form method="POST">
             <input type="text" name="nome_p" placeholder="Nome do Produto" required>
             <br>
-            <input type="number" name="preco" placeholder="Preço" required>
+            <input type="text" name="preco" placeholder="Preço" required>
+            <br>
+            <input type="number" name="quantidade" placeholder="Quantidade" required>
             <br>
             <select name="categorias">
                 <option value="cat1">Categorias exemplo 1</option>
@@ -95,7 +169,7 @@
        
         </div>
         <div class="modal-footer">
-            <button  class="btn btn-default" name="c_produtos" onclick="Produtos_ADD($_POST['nome_p'], $_POST['preco'], $_POST['categorias'], $_POST['descricao'], $_POST['img'])"> Salvar </button> </form>
+            <button  class="btn btn-default" name="c_produtos" onclick="Produtos_ADD($_POST['nome_p'], $_POST['preco'], $_POST['quantidade'],$_POST['categorias'], $_POST['descricao'], $_POST['img'])"> Salvar </button> </form>
             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
         </div>
       </div>
@@ -145,11 +219,12 @@
     
     //PRODUTOS
     if (isset($_POST['c_produtos'])){
-      Produtos_ADD($_POST['nome_p'], $_POST['preco'], $_POST['categorias'], $_POST['descricao'], $_POST['img']);
+      Produtos_ADD($_POST['nome_p'], $_POST['preco'], $_POST['quantidade'], $_POST['categorias'], $_POST['descricao'], $_POST['img']);
     }
     //Curiosidades
     if (isset($_POST['c_curiosidades'])){
       Curiosidades_ADD($_POST['nome_c'], $_POST['categorias'], $_POST['descricao'], $_POST['img']);
     }
-            
-?>  
+    //USUARIO
+           
+?>

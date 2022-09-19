@@ -36,8 +36,8 @@ function LoginAdmin($user_adm, $senha_adm){
 
 // FUNÇÃO DE ADD PRODUTOS
 
-function Produtos_ADD($nome_p, $preco, $categorias, $descricao, $img) {
-    echo $nome_p.'<br>'. $preco.'<br>'.  $categorias.'<br>'.  $descricao.'<br>'.  $img;
+function Produtos_ADD($nome_p, $preco, $quantidade, $categorias, $descricao, $img) {
+    echo $nome_p.'<br>'. $preco.'<br>'. $quantidade.'<br>'. $categorias.'<br>'.  $descricao.'<br>'.  $img;
 }
 
 // FIM DA FUNÇÃO DE ADD PRODUTOS
