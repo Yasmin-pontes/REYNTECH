@@ -36,11 +36,19 @@ function LoginAdmin($user_adm, $senha_adm){
 
 // FUNÇÃO DE ADD PRODUTOS
 
-function Produtos($nome_p, $preco, $categorias, $descricao, $img) {
+function Produtos_ADD($nome_p, $preco, $categorias, $descricao, $img) {
     echo $nome_p.'<br>'. $preco.'<br>'.  $categorias.'<br>'.  $descricao.'<br>'.  $img;
 }
 
 // FIM DA FUNÇÃO DE ADD PRODUTOS
+
+// FUNÇÃO DE ADD CURIOSIDADES
+
+function Curiosidades_ADD($nome_c, $categorias, $descricao, $img){
+	echo $nome_c.'<br>'. $categorias.'<br>'.$descricao.'<br>'. $img;
+}
+
+// FIM DA FUNÇÃO DE ADD CURIOSIDADES
 
 // FUNÇÃO DE LOGIN
 
