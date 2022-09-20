@@ -33,26 +33,36 @@
 	 				if (isset($_POST['email'])) {
 						Login($_POST['email'], $_POST['senha']);
 					}
+
+					if(isset($_POST['cc'])){
+						$cookie_email = $_POST['email'];
+						$cookie_senha = $_POST['senha'];
+						$checkbox = 'checked'; 
+
+						setcookie('cookie_email', $cookie_email, time() + 3600);
+						setcookie('cookie_senha', $cookie_senha, time() + 3600);
+						setcookie('checkbox', $checkbox, time() + 3600);
+					}
 				?>
 				
 				<div class="row">
 					<div class="col-lg-12 no-pdd">
 						<div class="sn-field">
-							<input type="text" name="email" placeholder="Email">
+							<input type="text" name="email" value="<?php echo $_COOKIE['cookie_email']; ?>" placeholder="Email">
 							<i class="la la-user"></i>
 						</div>
 						<!--sn-field end-->
 					</div>
 					<div class="col-lg-12 no-pdd">
 						<div class="sn-field">
-							<input type="password" name="senha" placeholder="Senha">
+							<input type="password" name="senha" value="<?php echo $_COOKIE['cookie_senha']; ?>" placeholder="Senha">
 							<i class="la la-lock"></i>
 						</div>
 					</div>
 					<div class="col-lg-12 no-pdd">
 						<div class="checky-sec">
 							<div class="fgt-sec">
-								<input type="checkbox" name="cc" id="c1">
+								<input type="checkbox" name="cc" id="c1" value="on" <?php echo $_COOKIE['checkbox'] ?>>
 								<label for="c1">
 									<span></span>
 								</label>
