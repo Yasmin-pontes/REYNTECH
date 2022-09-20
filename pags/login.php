@@ -60,6 +60,7 @@
 							</div>
 							<!--fgt-sec end-->
 							<a href="esqueceu_senha.php">Esqueceu a senha?</a>
+							<a href="cadastrar.php"> Não é cadastrado? Cadastre-se aqui! </a>
 						</div>
 					</div>
 					<div class="col-lg-12 no-pdd">
