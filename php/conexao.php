@@ -34,6 +34,20 @@ function LoginAdmin($user_adm, $senha_adm){
 
 //FIM DA FUNÇÃO DE ADM
 
+//FUNÇÃO DE LEMBRAR LOGIN
+
+function LembrarLogin($email, $senha){
+	$cookie_email = $_POST['email'];
+	$cookie_senha = $_POST['senha'];
+	$checkbox = 'checked'; 
+
+	setcookie('cookie_email', $cookie_email, time() + 3600);
+	setcookie('cookie_senha', $cookie_senha, time() + 3600);
+	setcookie('checkbox', $checkbox, time() + 3600);
+}
+
+//FIM DA FUNÇÃO DE LEMBRAR LOGIN
+
 // FUNÇÃO DE ADD PRODUTOS
 
 function Produtos_ADD($nome_p, $preco, $quantidade, $categorias, $descricao, $img) {

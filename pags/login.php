@@ -35,20 +35,14 @@
 					}
 
 					if(isset($_POST['cc'])){
-						$cookie_email = $_POST['email'];
-						$cookie_senha = $_POST['senha'];
-						$checkbox = 'checked'; 
-
-						setcookie('cookie_email', $cookie_email, time() + 3600);
-						setcookie('cookie_senha', $cookie_senha, time() + 3600);
-						setcookie('checkbox', $checkbox, time() + 3600);
+						LembrarLogin($_POST['email'], $_POST['senha']);
 					}
 				?>
 				
 				<div class="row">
 					<div class="col-lg-12 no-pdd">
 						<div class="sn-field">
-							<input type="text" name="email" value="<?php echo $_COOKIE['cookie_email']; ?>" placeholder="Email">
+							<input type="text" name="email" value="<?php echo $_POST['email']; ?>" placeholder="Email">
 							<i class="la la-user"></i>
 						</div>
 						<!--sn-field end-->
