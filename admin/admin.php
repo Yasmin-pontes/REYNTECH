@@ -8,12 +8,14 @@ include('../pags/header.php');
 
 <body>
 
+  <h3 class='my-3 mx-3'>Produtos</h3>
+
   <!-- Modal de Cadastro -->
   <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+          <h5 class="modal-title" id="exampleModalToggleLabel">Cadastrar Produto</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -41,33 +43,15 @@ include('../pags/header.php');
             <label for="imagemProduto">Imagem</label>
             <input type="text" class="form-control" id="imagemProduto" placeholder="Imagem">
           </div>
-          <div class="modal-footer mx-auto mt-3">
-            <button type="button" class="btn btn-dark" onclick="addProduto()">Salvar</button>
-          </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark" onclick="addProduto()">Salvar</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Hide this modal and show the first with the button below.
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
+  <a class="btn btn-dark mb-3 mx-3" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Adicionar Produto</a>
   <!-- Fim do Modal de Cadastro -->
 
 
@@ -114,38 +98,13 @@ include('../pags/header.php');
       </div>
     </div>
   </div>
-  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Hide this modal and show the first with the button below.
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
   <!-- Fim do Modal de Edição -->
-
-
-
 
 
   <div id="displayAdmin"></div>
 
 
-
-
-
-  <footer class="text-center mt-5 bg-dark text-white">
-    Metstars - 2022
-  </footer>
+  <?php include('../pags/footer.php'); ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -221,7 +180,6 @@ include('../pags/header.php');
         updateid: updateid
       }, function(data, status) {
         var produto = JSON.parse(data);
-        $('#cdProduto').val(produto.cd_produto);
         $('#nomeProdutoAlter').val(produto.nm_produto);
         $('#valorProdutoAlter').val(produto.vl_preco);
         $('#descricaoProdutoAlter').val(produto.ds_produto);
@@ -235,7 +193,6 @@ include('../pags/header.php');
 
     //Eevento onclick do EDITAR 
     function updateDetails() {
-      var cdProduto = $('#cdProduto').val();
       var nomeProdutoAlter = $('#nomeProdutoAlter').val();
       var valorProdutoAlter = $('#valorProdutoAlter').val();
       var descricaoProdutoAlter = $('#descricaoProdutoAlter').val();
@@ -245,7 +202,6 @@ include('../pags/header.php');
       var hiddendata = $('#hiddendata').val();
 
       $.post('db_admin/updateProduto.php', {
-        cdProduto : cdProduto,
         nomeProdutoAlter: nomeProdutoAlter,
         valorProdutoAlter: valorProdutoAlter,
         descricaoProdutoAlter: descricaoProdutoAlter,
