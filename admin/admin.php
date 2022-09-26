@@ -13,7 +13,7 @@ include('../pags/header.php');
 
   <!-- Modal de Cadastro -->
   <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel">Cadastrar Produto</h5>
@@ -37,8 +37,20 @@ include('../pags/header.php');
             <input type="text" class="form-control" id="qtdProduto" placeholder="Quantidade">
           </div>
           <div class="form-group">
-            <label for="categoriaProduto">Categoria</label>
-            <input type="number" class="form-control" id="categoriaProduto" placeholder="Categoria">
+            <label>Categoria</label>
+            <select class="form-select">
+              <option selected></option>
+
+              <?php
+                $sql = "SELECT * FROM tb_categoria";
+                $res = mysqli_query($mysqli, $sql);
+
+                while ($row = mysqli_fetch_assoc($res)) { 
+                  echo "<option id='categoriaProduto' value='".$row['cd_categoria']."'>".$row['nm_categoria']."</option>";
+                };
+              ?>
+
+            </select>
           </div>
           <div class="form-group">
             <label for="imagemProduto">Imagem</label>
@@ -60,7 +72,7 @@ include('../pags/header.php');
 
   <!-- Modal de Edição -->
   <div class="modal fade" id="updateModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
