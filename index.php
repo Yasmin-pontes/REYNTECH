@@ -1,10 +1,10 @@
 <!-- HEADER -->
 <?php include('pags/header.php'); ?>
+<link rel="stylesheet" href="css/estilo.css">
 
 <body>
 
     <!-- NAVBAR -->
-
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid px-5">
             <a class="navbar-brand" href="#">M&S Garden</a>
@@ -41,6 +41,7 @@
     <!-- FIM NAVBAR -->
     <a href="admin/login_admin.php"> ADM </a>
 
+
     <!-- INICIO DA HOME -->
     <div class="container-fluid main mb-5">
         <main>
@@ -48,7 +49,7 @@
             <h3 id="h3-index">Plantamos com amor</h3>
 
             <figure>
-                <img id="seta" data-aos="fade-down" src="img/seta.jpg" alt="seta">
+                <img id="seta" data-aos="fade-down" src="img/seta.png" alt="seta">
             </figure>
         </main>
     </div>

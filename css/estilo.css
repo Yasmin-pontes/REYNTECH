@@ -6,6 +6,7 @@
 
 body { 
     min-height: 100vh; 
+    overflow-x: hidden;
 }
 
 input[type="number"]::-webkit-outer-spin-button,

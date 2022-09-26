@@ -7,6 +7,7 @@ include('../pags/header.php');
 ?>
 
 <body>
+  <a href="../index.php">Voltar</a>
 
   <h3 class='my-3 mx-3'>Produtos</h3>
 
