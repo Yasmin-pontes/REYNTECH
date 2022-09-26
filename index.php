@@ -17,7 +17,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Produtos</a>
+                        <a class="nav-link" href="pags/pag_produtos.php">Produtos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Categorias</a>
