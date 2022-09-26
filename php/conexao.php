@@ -44,6 +44,12 @@ function LembrarLogin($email, $senha){
 	setcookie('cookie_email', $cookie_email, time() + 3600);
 	setcookie('cookie_senha', $cookie_senha, time() + 3600);
 	setcookie('checkbox', $checkbox, time() + 3600);
+
+}
+function NLembrarLogin(){
+	setcookie('cookie_email','""', time() + 3600);
+	setcookie('cookie_senha','""', time() + 3600);
+	setcookie('checkbox','""', time() + 3600);
 }
 
 //FIM DA FUNÇÃO DE LEMBRAR LOGIN

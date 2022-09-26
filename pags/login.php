@@ -32,17 +32,18 @@
 		 			include_once("../php/conexao.php");
 	 				if (isset($_POST['email'])) {
 						Login($_POST['email'], $_POST['senha']);
-					}
-
+					}		
 					if(isset($_POST['cc'])){
 						LembrarLogin($_POST['email'], $_POST['senha']);
+					}else{
+						NLembrarLogin();
 					}
 				?>
 				
 				<div class="row">
 					<div class="col-lg-12 no-pdd">
 						<div class="sn-field">
-							<input type="text" name="email" value="<?php echo $_POST['email']; ?>" placeholder="Email">
+							<input type="text" name="email" value="<?php echo $_COOKIE['cookie_email']; ?>" placeholder="Email">
 							<i class="la la-user"></i>
 						</div>
 						<!--sn-field end-->
@@ -56,7 +57,7 @@
 					<div class="col-lg-12 no-pdd">
 						<div class="checky-sec">
 							<div class="fgt-sec">
-								<input type="checkbox" name="cc" id="c1" value="on" <?php echo $_COOKIE['checkbox'] ?>>
+								<input type="checkbox" name="cc" id="c1" value="on" <?php echo $_COOKIE['checkbox']; ?>>
 								<label for="c1">
 									<span></span>
 								</label>
