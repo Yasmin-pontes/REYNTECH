@@ -38,16 +38,16 @@ include('../pags/header.php');
           </div>
           <div class="form-group">
             <label>Categoria</label>
-            <select class="form-select">
-              <option selected></option>
+            <select class="form-select" onchange = "adicionarCategoria()">
+              <option selected ></option>
 
               <?php
                 $sql = "SELECT * FROM tb_categoria";
                 $res = mysqli_query($mysqli, $sql);
 
                 while ($row = mysqli_fetch_assoc($res)) { 
-                  echo "<option id='categoriaProduto' value='".$row['cd_categoria']."'>".$row['nm_categoria']."</option>";
-                };
+                  echo "<option id='categoriaProduto' value='".$row['cd_categoria']."'>".$row['cd_categoria']."- ".$row['nm_categoria']."</option>";
+                };        
               ?>
 
             </select>
@@ -122,10 +122,14 @@ include('../pags/header.php');
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script>
+    var categoriaProdutoAdd ;
+
     $(document).ready(function() {
       displayData();
     });
-
+    function adicionarCategoria(){
+      categoriaProdutoAdd=$(".form-select option:checked").val();
+    }
     function displayData() {
       var displayData = "true";
 
@@ -147,9 +151,7 @@ include('../pags/header.php');
       var valorProdutoAdd = $('#valorProduto').val();
       var descricaoProdutoAdd = $('#descricaoProduto').val();
       var qtdProdutoAdd = $('#qtdProduto').val();
-      var categoriaProdutoAdd = $('#categoriaProduto').val();
       var imagemProdutoAdd = $('#imagemProduto').val();
-
       $.ajax({
         url: 'db_admin/addProduto.php',
         type: 'post',

@@ -28,9 +28,20 @@ if (isset($_POST['displaySend'])) {
                 <p class="card-text"><b>Nome:</b> '.$nm_produto.'</p>
                 <p class="card-text"><b>Valor:</b> '.$vl_preco.'</p>
                 <p class="card-text"><b>Descrição:</b> '.$ds_produto.'</p>
-                <p class="card-text"><b>Quantidade:</b> '.$qtd_produto.'</p>
-                <p class="card-text"><b>Categoria:</b>'.$id_categoria.'</p>
-                <p class="card-text"><b>Imagem:</b>'.$id_imagem_produto.'</p>
+                <p class="card-text"><b>Quantidade:</b> '.$qtd_produto.'</p>';
+
+                $sql = "SELECT nm_categoria FROM tb_categoria WHERE cd_categoria=$id_categoria";
+                $res = mysqli_query($mysqli, $sql);
+                
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $row['nm_categoria'];
+                
+                $container .= '
+                <p class="card-text"><b>Categoria:</b> '.$row['nm_categoria'].'</p>'; 
+                };
+
+                $container .= '
+                <p class="card-text"><b>Imagem:</b> '.$id_imagem_produto.'</p>
                 <button class="btn btn-secondary" onclick="GetDetails('.$cd_produto.')">Editar</button>
                 <button class="btn btn-dark" onclick="deleteProduto('.$cd_produto.')">Deletar</button>
               </div>

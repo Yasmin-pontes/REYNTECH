@@ -126,6 +126,9 @@ CREATE TABLE IF NOT EXISTS tb_produto_pedido (
 
 -- Inserts
 
+INSERT INTO `tb_admin`(`cd_admin`, `nm_admin`, `ds_senha`) 
+VALUES (null,'ray',123), (null,'edu',123);
+
 INSERT INTO `tb_imagem`(`cd_imagem`, `ft_produto_principal`) 
 VALUES (null,"edu.jpg");
 
