@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esqueceu a senha?</title>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-</head>
+<?php include('header.php'); ?>
+
 <body>
 
-<?php include('navbar.php'); ?>
+<?php include('navbar.php'); ?> 
 
 <center>
-<form method="post">
+<form class="mt-5" method="post">
     <h2> Confirme seu email</h2>
-    <input type="email" name="email" id="email" required>
-    <br>👇<br>👉<input type="button" value="Enviar Email" onclick="sendEmail()" />👈<br>👆
+    <input type="email" name="email" id="email" required><br>
+    <br>👇<br>👉<button class="btn btn-outline-success" type="button" onclick="sendEmail()">Enviar</button>👈<br>👆
 </form>
 </center> 
 <script>

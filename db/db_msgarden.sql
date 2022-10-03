@@ -147,6 +147,9 @@ VALUES (null, "Planta", 12.50,"Muito bom", 3, 1, 1);
 INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`, `id_imagem_produto`) 
 VALUES (null, "Planta2", 4.50,"Muito bom", 3, 2, 2);
 
+INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`, `id_imagem_produto`) 
+VALUES (null, "Planta3", 12.50,"Muito bom", 3, 1, 1);
+
 INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`, `id_imagem_usuario`) 
 VALUES (null,"ray","2000-12-12","ray@ray",null,123, 12345, 1);
 

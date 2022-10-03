@@ -1,5 +1,5 @@
-<!-- HEADER -->
-<?php include('header.php'); ?>
+<?php include('../pags/header.php'); ?>
+<link rel="stylesheet" href="../css/estilo.css">
 
 <body>
 
@@ -17,13 +17,13 @@
                                                 Cadastrar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['celular']);
                                         }
                                         ?>
-                                        <input class="form-control" type="text" name="nome" placeholder="Nome" required>
-                                        <input class="form-control" id="email" type="email" name="email" placeholder="E-mail" required>
-                                        <input class="form-control" type="number" name="celular" placeholder="Celular" required>
-                                        <input class="form-control" type="number" name="codigo" placeholder="Código de Verificação">
-                                        <button class="btn btn-outline-primary btn-sm"> Enviar Código </button>
-                                        <input class="form-control" type="password" id="senha1" name="senha" placeholder="Senha" required>
-                                        <input class="form-control" type="password" id="senha2" onchange="senhaDiff()" name="c_senha" placeholder="Confirmar Senha" required>
+                                        <input class="form-control mb-2" type="text" name="nome" placeholder="Nome" required>
+                                        <input class="form-control mb-2" id="email" type="email" name="email" placeholder="E-mail" required>
+                                        <input class="form-control mb-2" type="number" name="celular" placeholder="Celular" required>
+                                        <input class="form-control mb-2" type="number" name="codigo" placeholder="Código de Verificação">
+                                        <button class="btn btn-outline-primary btn-sm mb-2"> Enviar Código </button>
+                                        <input class="form-control mb-2" type="password" id="senha1" name="senha" placeholder="Senha" required>
+                                        <input class="form-control mb-2" type="password" id="senha2" onchange="senhaDiff()" name="c_senha" placeholder="Confirmar Senha" required>
                                         <span class="erro-pass" style="color:red;"></span>
 
                                         <button type="submit" class="btn btn-outline-primary btn-sm"> Confirmar </button>
@@ -51,8 +51,6 @@
                 </div>
         </div>
 
-        <!-- FOOTER -->
-        <?php include('footer.php'); ?>
 </body>
 
 </html>

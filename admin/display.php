@@ -1,4 +1,11 @@
 <!-- HEADER -->
+
+<style>
+  body {
+    overflow-x: hidden !important;
+  }
+</style>
+
 <?php
 session_start();
 include_once("../php/conexao.php");
@@ -6,7 +13,7 @@ include('../pags/header.php');
 
 
 if (isset($_POST['displaySend'])) {
-    $container='<div class="row row-cols-1 row-cols-md-2">';
+    $container='<div class="row row-cols-1 row-cols-md-3 p-5">';
 
     $sql = "SELECT * FROM tb_produto";
     $result = mysqli_query($mysqli, $sql);
@@ -21,7 +28,7 @@ if (isset($_POST['displaySend'])) {
         $id_imagem_produto = $row['id_imagem_produto'];
         $container .= '
         <div class="col mb-4">
-          <div class="card">
+          <div class="card" style="width: 22rem;">
             <div class="card-header header-representante-admin">'.$nm_produto.'</div>
             <div class="card-body body-representante-admin">
                 <p class="card-text"><b>Código:</b> '.$cd_produto.'</p>
@@ -42,7 +49,7 @@ if (isset($_POST['displaySend'])) {
 
                 $container .= '
                 <p class="card-text"><b>Imagem:</b> '.$id_imagem_produto.'</p>
-                <button class="btn btn-secondary" onclick="GetDetails('.$cd_produto.')">Editar</button>
+                <button class="btn btn-success" onclick="GetDetails('.$cd_produto.')">Editar</button>
                 <button class="btn btn-dark" onclick="deleteProduto('.$cd_produto.')">Deletar</button>
               </div>
             </div>

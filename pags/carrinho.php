@@ -1,17 +1,12 @@
 <?php
 session_start();
 include_once("../php/conexao.php");
+include('../pags/header.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
+<link rel="stylesheet" href="../css/estilo.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho</title>
-</head>
+<center>
 <?php
 if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = array();
@@ -60,7 +55,7 @@ if (isset($_GET['acao'])) {
 
 <body>
     <?php include('navbar.php'); ?>
-    <table>
+    <table class="mt-5">
         <caption>Carrinho de Compras</caption>
         <thead>
             <tr>
@@ -112,7 +107,7 @@ if (isset($_GET['acao'])) {
     </table>
     <a href="pag_produtos.php">Voltar</a>
 </body>
-
+</center>
 <style>
     table,
     tr,
