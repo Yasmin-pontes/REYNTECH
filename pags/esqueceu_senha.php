@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<?php include('navbar.php'); ?>
+
 <center>
 <form method="post">
     <h2> Confirme seu email</h2>

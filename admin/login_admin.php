@@ -1,63 +1,51 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-	<!-- BOOTSTRAP -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+<?php include('../pags/header.php'); ?>
+<link rel="stylesheet" href="../css/estilo.css">
 
-	<!-- CSS -->
-    <link rel="stylesheet" href="../css/estilo.css">
-
-	<title>ADM</title>
-</head>
-<body>
+<body class="fundo-admin">
 
 	<div class="container">
 		<div class="row">
-			<h1>Acesse sua conta de ADM</h1>
 
-			<h3>Entre</h3>
 			<form method="POST">
 
 				<?php
-					session_start();
-		 			include_once("../php/conexao.php");
-	 				if (isset($_POST['user_adm'])) {
-						LoginAdmin($_POST['user_adm'], $_POST['senha_adm']);
-					}
+				session_start();
+				include_once("../php/conexao.php");
+				if (isset($_POST['user_adm'])) {
+					LoginAdmin($_POST['user_adm'], $_POST['senha_adm']);
+				}
 				?>
-				
-				<div class="row">
-					<div class="col-lg-12 no-pdd">
-						<div class="sn-field">
-							<input type="text" name="user_adm" placeholder="User">
-							<i class="la la-user"></i>
+
+				<section>
+					<div class="container mt-5 pt-5">
+						<div class="row">
+							<div class="col-12 col-sm-12 col-md-8 col-lg-6 m-auto">
+								<div class="card border-0">
+									<div class="card-body shadow-lg">
+										<a href="../index.php"><button type="button" class="btn-close" aria-label="Close"></button></a>
+										<img class="rounded mx-auto d-block" src="../assets/cactu.gif" alt="Logo" height="120px" width="150px">
+										<form action="php/login.php" method="POST">
+											<div class="form-group">
+												<input type="text" class="form-control my-3 py-2 input-bloco" name="user_adm" placeholder="Admin" required autofocus />
+											</div>
+											<div class="form-group">
+												<input type="password" class="form-control my-3 py-2 input-bloco" name="senha_adm" placeholder="Senha" required autofocus />
+											</div>
+											<div class="text-center mt-3">
+												<button type="submit" class="btn btn-outline-success px-5 input-focus-color-success">Entrar</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
 						</div>
-						<!--sn-field end-->
 					</div>
-					<div class="col-lg-12 no-pdd">
-						<div class="sn-field">
-							<input type="password" name="senha_adm" placeholder="Senha">
-							<i class="la la-lock"></i>
-						</div>
-					</div>
-<br><br>
-					<div class="col-lg-12 no-pdd">
-						<button type="submit" value="submit">Entrar</button>
-						<br>
-						<a href="../index.php"> Voltar </a>
-					</div>
-				</div>
+				</section>
 			</form>
 		</div>
 	</div>
-	
+
 
 </body>
+
 </html>
