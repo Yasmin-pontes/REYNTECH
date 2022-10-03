@@ -69,13 +69,7 @@ include_once("../php/conexao.php");
                 <th>Remover</th>
             </tr>
         </thead>
-            <form action="?acao=up" method="POSt">
-        <tfoot>
-            <tr>
-                <td colspan="5"><input type="submit" value="Atualizar Carrinho"></td>
-            </tr>
-            <td colspan="5"><a href="pag_produtos.php">Continuar Comprando</a></td>
-        </tfoot>
+            <form action="?acao=up" id="form" method="POST">
         <tbody>
                 <?php
                     if(count($_SESSION['carrinho']) == 0){
@@ -94,7 +88,7 @@ include_once("../php/conexao.php");
 
                             echo '<tr>
                                     <td>'.$nome.'</td>
-                                    <td> <input type="text" size="3" name="prod['.$id.']" value="'.$qtd.'"> </td>
+                                    <td> <input type="number" onchange="alterar()" id="qtd" name="prod['.$id.']" value="'.$qtd.'"> </td>
                                     <td>R$ '.$valor.'</td>
                                     <td>R$ '.$sub.'</td>
                                     <td><a href="?acao=del&id='.$row['cd_produto'].'"> Remover <a/></td>
@@ -105,16 +99,31 @@ include_once("../php/conexao.php");
                     echo '<tr>
                             <td colspan="4"> Total </td>
                             <td>R$ '.$total.'</td>
-                          <tr>';
+                          <tr>
+                          <tr>
+                          <td> <input type="button" onclick="comprar()" value="Confirmar Compra"> </td>
+                          </tr>
+                          ';
                 ?>
         </tbody>
             </form>
     </table>
-    
+    <a href="pag_produtos.php">Voltar</a>   
 </body>
+
 <style>
 table, tr, td, caption {
   border:1px solid black;
 }
 </style>
+
+<script>
+function alterar() {
+    document.getElementById("form").submit();
+}
+function comprar(){
+    window.location.assign("../php/comprovante.php");
+    }
+</script>
+
 </html>
