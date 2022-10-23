@@ -1,6 +1,6 @@
 <!-- HEADER -->
 <?php include('pags/header.php'); ?>
-
+<!-- eu sou linda -->
 <!-- FAVICON -->
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
