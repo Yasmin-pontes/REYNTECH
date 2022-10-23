@@ -169,3 +169,20 @@ main {
     position: absolute;
 
 }
+ 
+li, a, .button-navbar {
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10px;
+}
+
