@@ -99,6 +99,22 @@ main {
 
 .card {
     background-color: #e0e4c5;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+#check {
+    transition: transform 0.5;
+    height: 20px;
+    width: 20px;
+}
+
+#check:checked {
+    background-color: #198654 !important;
+    border-color: #198654 !important;
 }
 
 .btn-comprar {
