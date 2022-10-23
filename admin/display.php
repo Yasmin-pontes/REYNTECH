@@ -29,13 +29,15 @@ if (isset($_POST['displaySend'])) {
         $container .= '
         <div class="col mb-4">
           <div class="card" style="width: 22rem;">
-            <div class="card-header header-representante-admin">'.$nm_produto.'</div>
+            
+            <img src="../img/fundoHome.jpg" class="card-img-top" alt="...">
             <div class="card-body body-representante-admin">
+                <h5 class="card-title">'.$nm_produto.'</h5>
                 <p class="card-text"><b>Código:</b> '.$cd_produto.'</p>
                 <p class="card-text"><b>Nome:</b> '.$nm_produto.'</p>
-                <p class="card-text"><b>Valor:</b> '.$vl_preco.'</p>
+                <p class="card-text"><b>Valor:</b> R$ '.number_format("$vl_preco",2,",",".").'</p>
                 <p class="card-text"><b>Descrição:</b> '.$ds_produto.'</p>
-                <p class="card-text"><b>Quantidade:</b> '.$qtd_produto.'</p>';
+                <p class="card-text"><b>Quantidade:</b> '.$qtd_produto.'</p>';  
 
                 $sql = "SELECT nm_categoria FROM tb_categoria WHERE cd_categoria=$id_categoria";
                 $res = mysqli_query($mysqli, $sql);

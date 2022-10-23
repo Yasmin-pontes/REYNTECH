@@ -86,13 +86,13 @@
             <div class="row">
                 <div class="col-md-8 col-sm-6 col-12 border border-success" data-aos="fade-right">
                     <figure>
-                        <img src="img/planta.jpg" alt="Planta" />
+                        <img src="img/planta_cate.jpg" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
                 <div class="col-6 col-md-4 col-sm-6 col-12 border border-success" data-aos="fade-left">
                     <figure>
-                        <img src="img/planta.jpg" alt="Planta" />
+                        <img src="img/planta_cate.jpg" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
@@ -101,19 +101,19 @@
             <div class="row">
                 <div class="col-md-4 col-sm-12 col-12 border border-success" data-aos="fade-right">
                     <figure>
-                        <img src="img/planta.jpg" alt="Planta" />
+                        <img src="img/planta_cate.jpg" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
                 <div class="col-md-4 col-sm-4 col-12 border border-success" data-aos="fade-left">
                     <figure>
-                        <img src="img/planta.jpg" alt="Planta" />
+                        <img src="img/planta_cate.jpg" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
                 <div class="col-md-4 col-sm-8 col-12 border border-success" data-aos="fade-left">
                     <figure>
-                        <img src="img/planta.jpg" alt="Planta" />
+                        <img src="img/planta_cate.jpg" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
@@ -122,13 +122,13 @@
             <div class="row">
                 <div class="col-md-6 col-12 border border-success" data-aos="fade-right">
                     <figure>
-                        <img src="img/planta.jpg" alt="Planta" />
+                        <img src="img/planta_cate.jpg" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
                 <div class="col-md-6 col-12 border border-success" data-aos="fade-left">
                     <figure>
-                        <img src="img/planta.jpg" alt="Planta" />
+                        <img src="img/planta_cate.jpg" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>

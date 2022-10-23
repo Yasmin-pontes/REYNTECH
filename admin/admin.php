@@ -39,7 +39,7 @@ include('../pags/header.php');
           <div class="form-group">
             <label>Categoria</label>
             <select class="form-select" onchange = "adicionarCategoria()">
-              <option selected ></option>
+              <option selected></option>
 
               <?php
                 $sql = "SELECT * FROM tb_categoria";
@@ -49,8 +49,18 @@ include('../pags/header.php');
                   echo "<option id='categoriaProduto' value='".$row['cd_categoria']."'>".$row['cd_categoria']."- ".$row['nm_categoria']."</option>";
                 };        
               ?>
-
             </select>
+
+            <script>
+                $(document).ready(function(){
+                  $("#btn").click(function(){
+                    $("#addCat").toggle();
+                  });
+                });
+            </script>
+            <button id="btn">+</button>
+            <input type="text" id="addCat" class="form-control" placeholder="Adicionar categoria" onchange="addCat()">
+
           </div>
           <div class="form-group">
             <label for="imagemProduto">Imagem</label>
@@ -122,14 +132,18 @@ include('../pags/header.php');
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script>
-    var categoriaProdutoAdd ;
+    var categoriaProdutoAdd;
 
     $(document).ready(function() {
       displayData();
     });
+
+    // Exibir Categoria
     function adicionarCategoria(){
       categoriaProdutoAdd=$(".form-select option:checked").val();
     }
+
+    // Exibir display
     function displayData() {
       var displayData = "true";
 
@@ -145,6 +159,26 @@ include('../pags/header.php');
       });
     }
 
+    // Adicionar categoria
+    if ($('#addCat').val() != null) {
+      function addCat() {
+      var addCat = $('#addCat').val();
+
+      $.ajax({
+        url: 'db_admin/addCat.php',
+        type: 'post',
+        data: {
+          addCatSend: addCat,
+        },
+        success: function(data, status) {
+          $(document).change(function() {
+            displayData();
+          });
+        }
+      });
+    }
+    }
+
     // Adição de Produto
     function addProduto() {
       var nomeProdutoAdd = $('#nomeProduto').val();
@@ -152,6 +186,7 @@ include('../pags/header.php');
       var descricaoProdutoAdd = $('#descricaoProduto').val();
       var qtdProdutoAdd = $('#qtdProduto').val();
       var imagemProdutoAdd = $('#imagemProduto').val();
+
       $.ajax({
         url: 'db_admin/addProduto.php',
         type: 'post',
