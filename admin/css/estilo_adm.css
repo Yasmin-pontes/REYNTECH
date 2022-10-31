@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+@font-face {
+    font-family: Curvilingus;
+    src: url(../../assets/Curvilingus.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.far, .fas {
+    font-size: 30px;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.label-file {
+    padding: 20px 10px;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+    display: block;
+    cursor: pointer;
+}
+
+.label-file:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+.input-file {
+    border-left: 1px solid #6c757d !important;
+    background-color: white !important;
+}
+
+.add_Categoria {
+    display: none !important;
+}
+
+.add_Categoria_btn {
+    border-start-end-radius: 8px !important;
+    border-end-end-radius: 8px !important;
+}
+
+
