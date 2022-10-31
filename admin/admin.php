@@ -84,7 +84,7 @@ include('../pags/header.php');
                                     </script>
 
                                     <button class="btn btn-outline-secondary add_Categoria_btn" id="btn" type="button">Add</button>
-                                    <input type="text" id="addCat" class="form-control add_Categoria" placeholder="Adicionar categoria" onchange="addCat()">
+                                    <input type="text" id="addCat" class="form-control add_Categoria" placeholder="Adicionar Categoria" onchange="addCat()">
 
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ include('../pags/header.php');
                                 <form method="POST" enctype="multipart/form-data">
                                     <div class="input-group mb-3">
                                         <input type="file" class="form-control" id="imagemProduto" value="edu.jpg">
-                                        <label id="imagemProduto" class="label-file rounded-start">Selecione uma Imagem</label>
+                                        <label for="imagemProduto" class="label-file rounded-start">Selecione uma Imagem</label>
                                         <input type="text" class="form-control input-file" value="Nenhum arquivo selecionado" disabled>
                                     </div>
                                 </form>
@@ -170,7 +170,6 @@ include('../pags/header.php');
     <?php include('../pags/footer.php'); ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../js/script.js"></script>
 
     <script>
         var categoriaProdutoAdd;
