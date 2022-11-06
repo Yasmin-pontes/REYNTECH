@@ -18,16 +18,15 @@ $dompdf = new Dompdf();
             $sub = number_format ($row['vl_preco'] * $qtd , 2,',','.');
             $total += $sub;
             $total = number_format ($total , 2,',','.');
-
         }
-
+        $array = array("planta 1","planta 2","planta 3");
 $dompdf->loadHtml('
 
     <h1> Comprovante de Compra </h1>
     <p> PDF com os produtos comprados  </p>
     <b> Produtos: </b>
     <br>
-    '.$nome.' 
+    '.$array[0].' <br> '.$array[1].'<br>'.$array[2].'
     <br><br><br>
     <b>Preço Total: </b> R$ '.$total.'
     

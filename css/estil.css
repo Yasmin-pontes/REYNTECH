@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+@font-face {
+    font-family: Curvilingus;
+    src: url(../assets/Curvilingus.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.far, .fas {
+    font-size: 30px;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0 !important;
+    border: 1px solid #198654 !important;
+    background-color: #e0e4c5 !important; 
+}
+
+.input-bloco {
+    background-color: #e0e4c5;  
+    border: 1px solid #b1b4b2 !important;
+}
+
+.titulo {
+    font-size: 60px;
+    font-family: 'Courgette', cursive;
+    color: black;
+}
+
+.main {
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 600px;
+    height: 600px;
+    text-align: center;
+    padding-top: 10%;
+}
+
+#h1-index {
+    font-size: 100px;
+    font-family: Curvilingus;
+}
+
+#h3-index {
+    margin-top: -15px;
+    font-weight: bold;
+    font-family: 'Courgette', cursive;
+}
+
+#h1-index, #h3-index {
+    color: black;
+}
+
+#seta {
+    height: 70px;
+    margin-top: 20px;
+    width: auto;
+}
+
+.pp {
+    float: left;
+    position: absolute;
+    bottom: -3vh;
+}
+
+#planta {
+    width: auto;
+    height: 350px;
+}
+
+.card {
+    background-color: #e0e4c5;
+}
+
+.btn-comprar {
+    background-color: #198654;
+    height: 2rem;
+    width: 6rem;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.fundo-home {
+    background: rgba(0, 0, 0, 0.6) url(../img/fundoHome.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.fundo-admin, .fundo-login {
+    background: rgba(0, 0, 0, 0.6) url(../img/fundoAdmin.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    color: #fff;
+}
+
+.espaco {
+    background: rgba(0, 0, 0, 0.6) url(../img/fundo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    color: #fff;
+}
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+}
+
+.categoria {
+       
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
+ 
+     }
+
+
+
+
+ 
+
