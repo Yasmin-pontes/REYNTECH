@@ -6,15 +6,30 @@
 <body>
     <?php include('navbar.php'); ?>
     
+<style>
+    .categorias{
+        width:100%;
+        height:100%;
+        padding: 10px;
+        
+    }
 
+</style>
 
+    <div class = "container">
+         <div class = "row">   
+            <div class="col-3">
+   
+                <img src="../img/planta.jpg" class= "categorias" alt="Planta" />
+            
 
-    <div class="py-5">  
+            </div>
+    <div class=" col-9 py-5">  
 
     
            
     <div class="container text-center mt-5">
-            <div class="row justify-content-md-center categoria ">
+            <div class="row justify-content-md-center ">
                 <div class="col-md-5 col-sm-12 col-12 " data-aos="fade-right">
                      <a id="inicio">
                         <h1 class="text-center my-5 titulo">Tipos de Plantas</h1>
@@ -31,34 +46,34 @@
         <div class="container text-center mt-5">
             
 
-            <div class="row  justify-content-md-center categoria">
-                <div class="col-md-2 col-sm-12 col-12 border border-success" data-aos="fade-right">
+            <div class="row  justify-content-md-center ">
+                <div class="col-md-2 col-sm-12 col-12 " data-aos="fade-right">
                     <figure>
-                        <img src="img/planta_cate.jpg" alt="Planta" />
+                        <img src="../img/planta.jpg" class= "categorias" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
-                <div class="col-md-2 col-sm-12 col-12 border border-success" data-aos="fade-left">
+                <div class="col-md-2 col-sm-12 col-12 " data-aos="fade-left">
                     <figure>
-                        <img src="img/planta_cate.jpg" alt="Planta" />
+                        <img src="../img/planta.jpg" class= "categorias" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
-                <div class="col-md-2 col-sm-12 col-12 border border-success" data-aos="fade-left">
+                <div class="col-md-2 col-sm-12 col-12 " data-aos="fade-left">
                     <figure>
-                        <img src="img/planta_cate.jpg" alt="Planta" />
+                        <img src="../img/planta.jpg"class= "categorias" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure>
                 </div>
-                <div class="col-md-2 col-sm-12 col-12 border border-success" data-aos="fade-left">
+                <div class="col-md-2 col-sm-12 col-12 " data-aos="fade-left">
                     <figure>
-                        <img src="img/planta_cate.jpg" alt="Planta" />
+                        <img src="../img/planta.jpg" class= "categorias" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure> 
                 </div>
-                <div class="col-md-2 col-sm-12 col-12 border border-success" data-aos="fade-left">
+                <div class="col-md-2 col-sm-12 col-12 " data-aos="fade-left">
                     <figure>
-                        <img src="img/planta_cate.jpg" alt="Planta" />
+                        <img src="../img/planta.jpg" class= "categorias" alt="Planta" />
                         <figcaption>Planta</figcaption>
                     </figure> 
                 </div>
@@ -70,6 +85,9 @@
 
            
         </div>
+    </div>
+
+    </div>
     </div>
 
     <!-- FIM DA HOME -->

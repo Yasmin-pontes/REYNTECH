@@ -95,7 +95,7 @@
             <i class="fas fa-moon"></i>
             </a>
 
-            <a class="cta" href="#">
+            <a class="cta" href="login.php">
             <i class="fas fa-user"></i>
             </a>
 
