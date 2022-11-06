@@ -50,7 +50,6 @@ if (isset($_POST['displaySend'])) {
                 };
 
                 $container .= '
-                <p class="card-text"><b>Imagem:</b> '.$id_imagem_produto.'</p>
                 <button class="btn btn-success" onclick="GetDetails('.$cd_produto.')">Editar</button>
                 <button class="btn btn-dark" onclick="deleteProduto('.$cd_produto.')">Deletar</button>
               </div>

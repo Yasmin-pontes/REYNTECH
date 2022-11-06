@@ -119,13 +119,12 @@ include('../pags/header.php');
                                         $path = $pasta . $novoNomeDaImg . "." . $extensao;
                                         $tudo_certo = move_uploaded_file($img_produto["tmp_name"], $path);
 
-                                        if ($tudo_certo) {
+                                        if ($tudo_certo) { 
                                             ?><script>alert("Arquivo enviado com sucesso!");</script><?php
                                         } else {
                                             ?><script>alert("Falha ao enviar o arquivo.");</script><?php
-                                            exit();
                                         }
-                                    }
+                                    } 
                                     ?>
 
                                     <script>
@@ -135,10 +134,12 @@ include('../pags/header.php');
                                                 $("#status-input").val("Arquivo selecionado: " + nomeImg);
                                             });
                                         });
+
+                                        var imagemProdutoNovo = "<?php echo $path; ?>";
                                     </script>
 
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="imagemProdutoNovo" value="<?php $path ?>" hidden>
+                                        <input type="text" class="form-control" id="imagemProdutoNovo" value="<?php echo $path; ?>" hidden>
                                         <input type="file" class="form-control" id="imagemProduto" name="img_produto">
                                         <label for="imagemProduto" class="label-file rounded-start">Selecione uma Imagem</label>
                                         <input type="text" class="form-control input-file" id="status-input" value="Arquivo não selecionado" disabled>
@@ -270,7 +271,7 @@ include('../pags/header.php');
             var valorProdutoAdd = $('#valorProduto').val();
             var descricaoProdutoAdd = $('#descricaoProduto').val();
             var qtdProdutoAdd = $('#qtdProduto').val();
-            var imagemProdutoAdd = $('#imagemProduto').val();
+            var imagemProdutoNovoAdd = imagemProdutoNovo;
 
             $.ajax({
                 url: 'db_admin/addProduto.php',
@@ -282,7 +283,7 @@ include('../pags/header.php');
                     descricaoProdutoSend: descricaoProdutoAdd,
                     qtdProdutoSend: qtdProdutoAdd,
                     categoriaProdutoSend: categoriaProdutoAdd,
-                    imagemProdutoSend: imagemProdutoAdd,
+                    imagemProdutoNovoSend: imagemProdutoNovoAdd,
 
                 },
                 success: function(data, status) {
@@ -290,6 +291,7 @@ include('../pags/header.php');
                     displayData();
                 }
             });
+            window.location.reload(true);
         }
 
 
