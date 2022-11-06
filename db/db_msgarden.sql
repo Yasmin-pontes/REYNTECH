@@ -3,20 +3,6 @@ CREATE SCHEMA IF NOT EXISTS db_msgarden DEFAULT CHARACTER SET utf8 COLLATE utf8_
 USE db_msgarden;
 
 -- -----------------------------------------------------
--- Table tb_imagem
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS tb_imagem (
-  cd_imagem INT NOT NULL AUTO_INCREMENT,
-  ft_produto_principal LONGBLOB NOT NULL,
-  ft_produto_secundario1 LONGBLOB NULL,
-  ft_produto_secundario2 LONGBLOB NULL,
-  ft_produto_secundario3 LONGBLOB NULL,
-  ft_usuario LONGBLOB NULL,
-  PRIMARY KEY (cd_imagem)   
-);
-
-
--- -----------------------------------------------------
 -- Table tb_usuario
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS tb_usuario (
@@ -27,12 +13,8 @@ CREATE TABLE IF NOT EXISTS tb_usuario (
   ds_email_recuperacao VARCHAR(60) NULL,
   ds_senha VARCHAR(20) NOT NULL,
   nr_celular VARCHAR(11) NOT NULL,
-  id_imagem_usuario INT NOT NULL,
-  status tinyint,
-  PRIMARY KEY (cd_usuario),
-  
-  FOREIGN KEY (id_imagem_usuario)
-  REFERENCES tb_imagem (cd_imagem)
+  ft_usuario LONGBLOB NULL,
+  PRIMARY KEY (cd_usuario)
 );
 
 
@@ -53,6 +35,7 @@ CREATE TABLE IF NOT EXISTS tb_admin (
 CREATE TABLE IF NOT EXISTS tb_categoria (
   cd_categoria INT NOT NULL AUTO_INCREMENT,
   nm_categoria VARCHAR(45) NOT NULL,
+  ft_categoria LONGBLOB NULL, /* arrumar para not null*/
   PRIMARY KEY (cd_categoria)   
 );
 
@@ -66,16 +49,16 @@ CREATE TABLE IF NOT EXISTS tb_produto (
   vl_preco DECIMAL(9,2) NOT NULL,
   ds_produto LONGTEXT NOT NULL,
   qtd_produto INT NOT NULL,
+  ft_produto_principal LONGBLOB NULL, /* arrumar para not null*/
+  ft_produto_secundario1 LONGBLOB NULL,
+  ft_produto_secundario2 LONGBLOB NULL,
+  ft_produto_secundario3 LONGBLOB NULL,
   PRIMARY KEY (cd_produto),
   
   id_categoria INT NOT NULL,
-  id_imagem_produto INT NOT NULL,
   
   FOREIGN KEY (id_categoria)
-  REFERENCES tb_categoria (cd_categoria),
-  
-  FOREIGN KEY (id_imagem_produto)
-  REFERENCES tb_imagem (cd_imagem)
+  REFERENCES tb_categoria (cd_categoria)
 );
 
 
@@ -86,15 +69,12 @@ CREATE TABLE IF NOT EXISTS tb_curiosidade (
   cd_curiosidade INT NOT NULL AUTO_INCREMENT,
   nm_curiosidade VARCHAR(45) NOT NULL,
   ds_descricao LONGTEXT NOT NULL,
+  ft_curiosidade LONGBLOB NULL, /* arrumar para not null*/
   id_categoria INT NOT NULL,
-  id_imagem_curiosidade INT NOT NULL,
   PRIMARY KEY (cd_curiosidade),
   
   FOREIGN KEY (id_categoria)
-  REFERENCES tb_categoria (cd_categoria),
-  
-  FOREIGN KEY (id_imagem_curiosidade)
-  REFERENCES tb_imagem (cd_imagem)
+  REFERENCES tb_categoria (cd_categoria)
 );
 
 
@@ -129,29 +109,23 @@ CREATE TABLE IF NOT EXISTS tb_produto_pedido (
 INSERT INTO `tb_admin`(`cd_admin`, `nm_admin`, `ds_senha`) 
 VALUES (null,'ray',123), (null,'edu',123);
 
-INSERT INTO `tb_imagem`(`cd_imagem`, `ft_produto_principal`) 
-VALUES (null,"edu.jpg");
-
-INSERT INTO `tb_imagem`(`cd_imagem`, `ft_produto_principal`) 
-VALUES (null,"ray.jpg");
-
 INSERT INTO `tb_categoria`(`cd_categoria`, `nm_categoria`) 
 VALUES (null,"Medicinal");
 
 INSERT INTO `tb_categoria`(`cd_categoria`, `nm_categoria`) 
 VALUES (null,"Cactacias");
 
-INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`, `id_imagem_produto`) 
-VALUES (null, "Planta", 12.50,"Muito bom", 3, 1, 1);
+INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`) 
+VALUES (null, "Planta", 12.50,"Muito bom", 3, 1);
 
-INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`, `id_imagem_produto`) 
-VALUES (null, "Planta2", 4.50,"Muito bom", 3, 2, 2);
+INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`) 
+VALUES (null, "Planta2", 4.50,"Muito bom", 3, 2);
 
-INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`, `id_imagem_produto`) 
-VALUES (null, "Planta3", 12.50,"Muito bom", 3, 1, 1);
+INSERT INTO `tb_produto`(`cd_produto`, `nm_produto`, `vl_preco`, `ds_produto`, `qtd_produto`, `id_categoria`) 
+VALUES (null, "Planta3", 12.50,"Muito bom", 3, 1);
 
-INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`, `id_imagem_usuario`) 
-VALUES (null,"ray","2000-12-12","ray@ray",null,123, 12345, 1);
+INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`) 
+VALUES (null,"ray","2000-12-12","ray@ray",null,123, 12345);
 
-INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`, `id_imagem_usuario`) 
-VALUES (null,"edu","2000-12-12","edu@edu",null,123,12345, 1);
+INSERT INTO `tb_usuario`(`cd_usuario`, `nm_usuario`, `dt_ingresso`, `ds_email`, `ds_email_recuperacao`, `ds_senha`, `nr_celular`) 
+VALUES (null,"edu","2000-12-12","edu@edu",null,123,12345);

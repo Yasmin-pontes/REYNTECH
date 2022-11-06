@@ -22,91 +22,136 @@ include('../pags/header.php');
                 </div>
 
                 <div class="modal-body">
-                    <div class="px-4">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="px-4">
 
-                        <div class="row g-4">
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="nomeProduto" placeholder="Rosa">
-                                    <label for="nomeProduto">Nome do Produto</label>
+                            <div class="row g-4">
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="nomeProduto" placeholder="Rosa">
+                                        <label for="nomeProduto">Nome do Produto</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="valorProduto" placeholder="R$10,00">
+                                        <label for="valorProduto">Valor do Produto</label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="valorProduto" placeholder="R$10,00">
-                                    <label for="valorProduto">Valor do Produto</label>
+
+                            <div class="row g-4">
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Bela rosa..." id="descricaoProduto"></textarea>
+                                        <label for="descricaoProduto">Descrição do Produto</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="qtdProduto" placeholder="3">
+                                        <label for="qtdProduto">Quantidade do Produto</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                            <div class="row g-4">
+                                <div class="col-md py-2">
+                                    <div class="input-group">
+                                        <select class="form-select py-3" onchange="adicionarCategoria()">
+                                            <option selected>Categoria do Produto</option>
 
-                        <div class="row g-4">
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Bela rosa..." id="descricaoProduto"></textarea>
-                                    <label for="descricaoProduto">Descrição do Produto</label>
+                                            <?php
+                                            $sql = "SELECT * FROM tb_categoria";
+                                            $res = mysqli_query($mysqli, $sql);
+
+                                            while ($row = mysqli_fetch_assoc($res)) {
+                                                echo "<option id='categoriaProduto' value='" . $row['cd_categoria'] . "'>" . $row['cd_categoria'] . "- " . $row['nm_categoria'] . "</option>";
+                                            };
+                                            ?>
+
+                                        </select>
+
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#btn").click(function() {
+                                                    $("#addCat").toggleClass("add_Categoria");
+                                                    $("#btn").toggleClass("add_Categoria_btn");
+                                                });
+                                            });
+                                        </script>
+
+                                        <button class="btn btn-outline-secondary add_Categoria_btn" id="btn" type="button">Add</button>
+                                        <input type="text" id="addCat" class="form-control add_Categoria" placeholder="Adicionar Categoria" onchange="addCat()">
+
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="qtdProduto" placeholder="3">
-                                    <label for="qtdProduto">Quantidade do Produto</label>
-                                </div>
-                            </div>
-                        </div>
+                                <div class="col-md py-2">
 
-                        <div class="row g-4">
-                            <div class="col-md py-2">
-                                <div class="input-group">
-                                    <select class="form-select py-3" onchange="adicionarCategoria()">
-                                        <option selected>Categoria do Produto</option>
+                                    <?php
+                                    if (isset($_FILES['img_produto'])) {
 
-                                        <?php
-                                        $sql = "SELECT * FROM tb_categoria";
-                                        $res = mysqli_query($mysqli, $sql);
+                                        $img_produto = $_FILES['img_produto'];
 
-                                        while ($row = mysqli_fetch_assoc($res)) {
-                                            echo "<option id='categoriaProduto' value='" . $row['cd_categoria'] . "'>" . $row['cd_categoria'] . "- " . $row['nm_categoria'] . "</option>";
-                                        };
-                                        ?>
+                                        if ($img_produto['error']) {
+                                            die("Falha ao enviar o arquivo.");
+                                        }
 
-                                    </select>
+                                        if ($img_produto['size'] > 3097152) {
+                                            die("Arquivo muito grande. Max.: 2MB");
+                                        }
+
+                                        $pasta = "arquivos/";
+                                        $nomeDaImg = $img_produto['name'];
+                                        $novoNomeDaImg = uniqid();
+                                        $extensao = strtolower(pathinfo($nomeDaImg, PATHINFO_EXTENSION));
+
+                                        if ($extensao != "jpg" && $extensao != "png") {
+                                            die("Tipo de arquivo não suportado.");
+                                        }
+
+                                        $tudo_certo = move_uploaded_file($img_produto["tmp_name"], $pasta . $novoNomeDaImg . "." . $extensao);
+
+                                        if ($tudo_certo) {
+                                            // $mysqli->query("INSERT INTO tb_produto ()")
+                                            echo "Arquivo enviado com sucesso!";
+                                        } else {
+                                            echo "Falha ao enviar o arquivo.";
+                                        }
+                                    }
+                                    ?>
 
                                     <script>
                                         $(document).ready(function() {
-                                            $("#btn").click(function() {
-                                                $("#addCat").toggleClass("add_Categoria");
-                                                $("#btn").toggleClass("add_Categoria_btn");
+                                            $("#imagemProduto").change(function() {
+                                                var nomeImg = $('#imagemProduto').val();
+                                                $("#status-input").val("Arquivo selecionado: " + nomeImg);
                                             });
                                         });
                                     </script>
 
-                                    <button class="btn btn-outline-secondary add_Categoria_btn" id="btn" type="button">Add</button>
-                                    <input type="text" id="addCat" class="form-control add_Categoria" placeholder="Adicionar Categoria" onchange="addCat()">
+                                    <div class="input-group mb-3">
+                                        <input type="file" class="form-control" id="imagemProduto" value="<?php  ?>" disabled>
+                                        <input type="file" class="form-control" id="imagemProduto" name="img_produto">
+                                        <label for="imagemProduto" class="label-file rounded-start">Selecione uma Imagem</label>
+                                        <input type="text" class="form-control input-file" id="status-input" value="Arquivo não selecionado" disabled>
+                                    </div>
 
                                 </div>
-                            </div>
 
-                            <div class="col-md py-2">
-                                <form method="POST" enctype="multipart/form-data">
-                                    <div class="input-group mb-3">
-                                        <input type="file" class="form-control" id="imagemProduto" value="edu.jpg">
-                                        <label for="imagemProduto" class="label-file rounded-start">Selecione uma Imagem</label>
-                                        <input type="text" class="form-control input-file" value="Nenhum arquivo selecionado" disabled>
-                                    </div>
-                                </form>
                             </div>
 
                         </div>
-
-                    </div>
+                    </form>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-dark" onclick="addProduto()">Salvar</button>
+                    <button class="btn btn-dark" onclick="addProduto()">Salvar</button>
                 </div>
 
             </div>
