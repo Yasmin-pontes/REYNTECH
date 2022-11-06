@@ -13,18 +13,18 @@ include('../pags/header.php');
     <h3 class='my-3 mx-3'>Produtos</h3>
 
     <!-- Modal de Cadastro -->
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Cadastrar Produto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Cadastrar Produto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-                <div class="modal-body">
-                    <form method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+
                         <div class="px-4">
-
                             <div class="row g-4">
                                 <div class="col-md py-2">
                                     <div class="form-floating">
@@ -98,11 +98,13 @@ include('../pags/header.php');
                                         $img_produto = $_FILES['img_produto'];
 
                                         if ($img_produto['error']) {
-                                            die("Falha ao enviar o arquivo.");
+                                            ?><script>alert("Falha ao enviar o arquivo.");</script><?php
+                                            exit();
                                         }
 
                                         if ($img_produto['size'] > 3097152) {
-                                            die("Arquivo muito grande. Max.: 2MB");
+                                            ?><script>alert("Arquivo muito grande. Max.: 2MB");</script><?php
+                                            exit();
                                         }
 
                                         $pasta = "arquivos/";
@@ -110,17 +112,18 @@ include('../pags/header.php');
                                         $novoNomeDaImg = uniqid();
                                         $extensao = strtolower(pathinfo($nomeDaImg, PATHINFO_EXTENSION));
 
-                                        if ($extensao != "jpg" && $extensao != "png") {
-                                            die("Tipo de arquivo não suportado.");
+                                        if ($extensao != "jpg" && $extensao != "jpeg" && $extensao != "png") {
+                                            ?><script>alert("Tipo de arquivo não suportado.");</script><?php
+                                            exit();
                                         }
-
-                                        $tudo_certo = move_uploaded_file($img_produto["tmp_name"], $pasta . $novoNomeDaImg . "." . $extensao);
+                                        $path = $pasta . $novoNomeDaImg . "." . $extensao;
+                                        $tudo_certo = move_uploaded_file($img_produto["tmp_name"], $path);
 
                                         if ($tudo_certo) {
-                                            // $mysqli->query("INSERT INTO tb_produto ()")
-                                            echo "Arquivo enviado com sucesso!";
+                                            ?><script>alert("Arquivo enviado com sucesso!");</script><?php
                                         } else {
-                                            echo "Falha ao enviar o arquivo.";
+                                            ?><script>alert("Falha ao enviar o arquivo.");</script><?php
+                                            exit();
                                         }
                                     }
                                     ?>
@@ -135,29 +138,26 @@ include('../pags/header.php');
                                     </script>
 
                                     <div class="input-group mb-3">
-                                        <input type="file" class="form-control" id="imagemProduto" value="<?php  ?>" disabled>
+                                        <input type="text" class="form-control" id="imagemProdutoNovo" value="<?php $path ?>" hidden>
                                         <input type="file" class="form-control" id="imagemProduto" name="img_produto">
                                         <label for="imagemProduto" class="label-file rounded-start">Selecione uma Imagem</label>
                                         <input type="text" class="form-control input-file" id="status-input" value="Arquivo não selecionado" disabled>
                                     </div>
-
                                 </div>
 
                             </div>
 
                         </div>
-                    </form>
-                </div>
+                    </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-dark" onclick="addProduto()">Salvar</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" onclick="addProduto()">Salvar</button>
+                    </div>
                 </div>
-
             </div>
         </div>
-
-    </div>
+    </form>
 
     <a class="btn btn-dark mb-3 mx-3" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Adicionar Produto</a>
     <!-- Fim do Modal de Cadastro -->
