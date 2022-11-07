@@ -13,106 +13,152 @@ include('../pags/header.php');
     <h3 class='my-3 mx-3'>Produtos</h3>
 
     <!-- Modal de Cadastro -->
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Cadastrar Produto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Cadastrar Produto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-                <div class="modal-body">
-                    <div class="px-4">
+                    <div class="modal-body">
 
-                        <div class="row g-4">
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="nomeProduto" placeholder="Rosa">
-                                    <label for="nomeProduto">Nome do Produto</label>
+                        <div class="px-4">
+                            <div class="row g-4">
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="nomeProduto" placeholder="Rosa">
+                                        <label for="nomeProduto">Nome do Produto</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="valorProduto" placeholder="R$10,00">
+                                        <label for="valorProduto">Valor do Produto</label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="valorProduto" placeholder="R$10,00">
-                                    <label for="valorProduto">Valor do Produto</label>
+
+                            <div class="row g-4">
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Bela rosa..." id="descricaoProduto"></textarea>
+                                        <label for="descricaoProduto">Descrição do Produto</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md py-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="qtdProduto" placeholder="3">
+                                        <label for="qtdProduto">Quantidade do Produto</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                            <div class="row g-4">
+                                <div class="col-md py-2">
+                                    <div class="input-group">
+                                        <select class="form-select py-3" onchange="adicionarCategoria()">
+                                            <option selected>Categoria do Produto</option>
 
-                        <div class="row g-4">
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Bela rosa..." id="descricaoProduto"></textarea>
-                                    <label for="descricaoProduto">Descrição do Produto</label>
+                                            <?php
+                                            $sql = "SELECT * FROM tb_categoria";
+                                            $res = mysqli_query($mysqli, $sql);
+
+                                            while ($row = mysqli_fetch_assoc($res)) {
+                                                echo "<option id='categoriaProduto' value='" . $row['cd_categoria'] . "'>" . $row['cd_categoria'] . "- " . $row['nm_categoria'] . "</option>";
+                                            };
+                                            ?>
+
+                                        </select>
+
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#btn").click(function() {
+                                                    $("#addCat").toggleClass("add_Categoria");
+                                                    $("#btn").toggleClass("add_Categoria_btn");
+                                                });
+                                            });
+                                        </script>
+
+                                        <button class="btn btn-outline-secondary add_Categoria_btn" id="btn" type="button">Add</button>
+                                        <input type="text" id="addCat" class="form-control add_Categoria" placeholder="Adicionar Categoria" onchange="addCat()">
+
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md py-2">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="qtdProduto" placeholder="3">
-                                    <label for="qtdProduto">Quantidade do Produto</label>
-                                </div>
-                            </div>
-                        </div>
+                                <div class="col-md py-2">
 
-                        <div class="row g-4">
-                            <div class="col-md py-2">
-                                <div class="input-group">
-                                    <select class="form-select py-3" onchange="adicionarCategoria()">
-                                        <option selected>Categoria do Produto</option>
+                                    <?php
+                                    if (isset($_FILES['img_produto'])) {
 
-                                        <?php
-                                        $sql = "SELECT * FROM tb_categoria";
-                                        $res = mysqli_query($mysqli, $sql);
+                                        $img_produto = $_FILES['img_produto'];
 
-                                        while ($row = mysqli_fetch_assoc($res)) {
-                                            echo "<option id='categoriaProduto' value='" . $row['cd_categoria'] . "'>" . $row['cd_categoria'] . "- " . $row['nm_categoria'] . "</option>";
-                                        };
-                                        ?>
+                                        if ($img_produto['error']) {
+                                            ?><script>alert("Falha ao enviar o arquivo.");</script><?php
+                                            exit();
+                                        }
 
-                                    </select>
+                                        if ($img_produto['size'] > 3097152) {
+                                            ?><script>alert("Arquivo muito grande. Max.: 2MB");</script><?php
+                                            exit();
+                                        }
+
+                                        $pasta = "arquivos/";
+                                        $nomeDaImg = $img_produto['name'];
+                                        $novoNomeDaImg = uniqid();
+                                        $extensao = strtolower(pathinfo($nomeDaImg, PATHINFO_EXTENSION));
+
+                                        if ($extensao != "jpg" && $extensao != "jpeg" && $extensao != "png") {
+                                            ?><script>alert("Tipo de arquivo não suportado.");</script><?php
+                                            exit();
+                                        }
+                                        $path = $pasta . $novoNomeDaImg . "." . $extensao;
+                                        $tudo_certo = move_uploaded_file($img_produto["tmp_name"], $path);
+
+                                        if ($tudo_certo) { 
+                                            ?><script>alert("Arquivo enviado com sucesso!");</script><?php
+                                        } else {
+                                            ?><script>alert("Falha ao enviar o arquivo.");</script><?php
+                                        }
+                                    } 
+                                    ?>
 
                                     <script>
                                         $(document).ready(function() {
-                                            $("#btn").click(function() {
-                                                $("#addCat").toggleClass("add_Categoria");
-                                                $("#btn").toggleClass("add_Categoria_btn");
+                                            $("#imagemProduto").change(function() {
+                                                var nomeImg = $('#imagemProduto').val();
+                                                $("#status-input").val("Arquivo selecionado: " + nomeImg);
                                             });
                                         });
+
+                                        var imagemProdutoNovo = "<?php echo $path; ?>";
                                     </script>
 
-                                    <button class="btn btn-outline-secondary add_Categoria_btn" id="btn" type="button">Add</button>
-                                    <input type="text" id="addCat" class="form-control add_Categoria" placeholder="Adicionar Categoria" onchange="addCat()">
-
-                                </div>
-                            </div>
-
-                            <div class="col-md py-2">
-                                <form method="POST" enctype="multipart/form-data">
                                     <div class="input-group mb-3">
-                                        <input type="file" class="form-control" id="imagemProduto" value="edu.jpg">
+                                        <input type="text" class="form-control" id="imagemProdutoNovo" value="<?php echo $path; ?>" hidden>
+                                        <input type="file" class="form-control" id="imagemProduto" name="img_produto">
                                         <label for="imagemProduto" class="label-file rounded-start">Selecione uma Imagem</label>
-                                        <input type="text" class="form-control input-file" value="Nenhum arquivo selecionado" disabled>
+                                        <input type="text" class="form-control input-file" id="status-input" value="Arquivo não selecionado" disabled>
                                     </div>
-                                </form>
+                                </div>
+
                             </div>
 
                         </div>
+                    </div>
 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" onclick="addProduto()">Salvar</button>
                     </div>
                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-dark" onclick="addProduto()">Salvar</button>
-                </div>
-
             </div>
         </div>
-
-    </div>
+    </form>
 
     <a class="btn btn-dark mb-3 mx-3" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Adicionar Produto</a>
     <!-- Fim do Modal de Cadastro -->
@@ -225,7 +271,7 @@ include('../pags/header.php');
             var valorProdutoAdd = $('#valorProduto').val();
             var descricaoProdutoAdd = $('#descricaoProduto').val();
             var qtdProdutoAdd = $('#qtdProduto').val();
-            var imagemProdutoAdd = $('#imagemProduto').val();
+            var imagemProdutoNovoAdd = imagemProdutoNovo;
 
             $.ajax({
                 url: 'db_admin/addProduto.php',
@@ -237,7 +283,7 @@ include('../pags/header.php');
                     descricaoProdutoSend: descricaoProdutoAdd,
                     qtdProdutoSend: qtdProdutoAdd,
                     categoriaProdutoSend: categoriaProdutoAdd,
-                    imagemProdutoSend: imagemProdutoAdd,
+                    imagemProdutoNovoSend: imagemProdutoNovoAdd,
 
                 },
                 success: function(data, status) {
@@ -245,6 +291,7 @@ include('../pags/header.php');
                     displayData();
                 }
             });
+            window.location.reload(true);
         }
 
 
